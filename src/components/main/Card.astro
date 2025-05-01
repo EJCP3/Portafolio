@@ -1,0 +1,69 @@
+---
+import { projects } from "@cv";
+import Bagde from "./Bagde.astro";
+import { TAGS } from "./Tags.ts";
+import BtnUrl from "../main/BtnUrl.astro";
+import CodeGithub from "~/icons/CodeGithub.astro";
+import Link from "~/icons/Link.astro";
+
+
+const tagsArray = Object.entries(TAGS);
+---
+
+<div>
+<ul class="projects-list">
+    {
+      projects.map((project: any) => (
+        <li class="project-item">
+          <img src={project.img} alt={project.name} class="project-image" />
+          <h3 class="text-xl font-medium">{project.name}</h3>
+
+          {project.technologies.map((skillName: string) => {
+            const tagEntry = tagsArray.find(
+              ([key, tag]) => tag.name.toLowerCase() === skillName.toLowerCase()
+            );
+
+            if (tagEntry) {
+              const [tagKey, tagData] = tagEntry;
+              return (
+                <>
+                  <Bagde key={tagData.name} class={tagData.class}>
+                    <span class="flex flex-row-reverse gap-1">
+                      <tagData.icon class="w-6 h-6" />
+                      {tagData.name}
+                    </span>
+                  </Bagde>
+                </>
+              );
+            }
+
+            return null;
+          })}
+
+          <p>{project.description}</p>
+          <footer class="flex justify-center items-center mt-4 gap-4">
+        
+        { project.github && (
+          <BtnUrl
+            href={project.github}>
+            <CodeGithub class="w-5 h-5" />
+            Code
+          </BtnUrl>
+        )}
+       
+       { project.demo && (
+        <BtnUrl
+          href={project.demo}>
+          <Link class="w-5 h-5" />
+          Preview
+        </BtnUrl>
+      )}
+      </footer>
+        </li>
+       
+      ))
+      
+    }
+      
+  </ul>
+</div>

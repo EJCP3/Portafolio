@@ -1,0 +1,66 @@
+---
+import KeyBoardSearch from "./KeyBoardSearch.astro";
+---
+
+<header class="flex justify-between mt-4">
+  <div class="flex flex-col justify-center items-center h-16 relative ">
+    <KeyBoardSearch/>
+  </div>
+  <div class="flex flex-col justify-center items-center h-16 relative">
+    <p class="text-sm"><span class="mouth"></span> <span class="day"></span></p>
+    <p class="text-4xl font-bold mb-4"><span class="hours"></span>:<span class="minute"></span></p>
+  </div>
+  <div class="flex-col justify-center items-center relative hidden">
+    <p>If u can imagine it, u can program it</p>
+  </div>
+  
+</header>
+
+<script>
+
+    const timeToday = new Date();
+    // const mouth = timeToday.getMonth() + 1; // Months are zero-based in JavaScript
+    const day = String(timeToday.getDate())
+    const hour = String(timeToday.getHours())
+    const minute = String(timeToday.getMinutes())
+    const mouth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][timeToday.getMonth()];
+    
+    console.log(mouth, day, hour, minute);
+
+    const classHour = document.querySelector('.hours');
+    const classMinute = document.querySelector('.minute');
+    const classMouth = document.querySelector('.mouth');
+    const classDay = document.querySelector('.day');
+    if (classHour && classMinute && classMouth && classDay) {
+        classDay.innerHTML = day;
+        classHour.innerHTML = hour;
+        classMinute.innerHTML = minute;
+        classMouth.innerHTML = mouth;
+
+    }
+
+    console.log(`Current date: ${timeToday.getDate()}/${mouth}/${timeToday.getFullYear()}`);
+    console.log(mouth);
+
+</script>
+
+<style>
+  div {
+    width: 129.23px;
+    height: 130px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  div {
+    background-image: url("/StarSeach.svg");
+  }
+
+  div:nth-child(2) {
+    background-image: url("/StarTime.svg");
+  }
+
+  div:last-child {
+    background-image: url("/StarIF.svg");
+  }
+</style>

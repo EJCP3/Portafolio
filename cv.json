@@ -1,0 +1,82 @@
+{
+  "basics": {
+    "name": "Euddy Cabrera ",
+    "label": "Euddy cabrera | Frontend Developer - Tecnólogo en desarrollo de software  ",
+    "email": "euddycabrera03@gmail.com",
+    "titular": "Frontend Developer de Santo Domingo, República Dominicana. especializado en el desarrollo de aplicaciones web únicas.",
+    "resumen": "Empece en la programación con block notes y HTML, CSS luego me adentre en el mundo hasta acaba siendo Tecnólogo en desarrollo de software.",
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "EJCP3",
+        "url": "https://github.com/EJCP3"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "Euddy Cabrera",
+        "url": "https://www.linkedin.com/in/euddycabrera/"
+      }
+    ]
+  },
+  "fondo": {
+    "movil": [
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png"
+    ],
+
+    "desktop": [
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png",
+      "https://i.imgur.com/0r1v2aH.png"
+    ]
+  },
+
+  "projects": [
+    {
+      "name": "Gatopia - Mini red social para adopción de gatos",
+      "img": "/Gatopia.png",
+      "description": "Plataforma interactiva para publicar contenido, gestionar adopciones y donaciones.",
+      "technologies": ["React.js", "Sass", "supabase", "React Suite"],
+      "github": "https://github.com/EJCP3/_Gatopia"
+    },
+    {
+      "name": "Memory of you - App de getion de recuerdos",
+      "img": "/memory.png",
+      "description": "Aplicación para gestionar recuerdos y fotos de seres queridos.",
+      "technologies": ["React.js", "tailwind CSS", "vite"],
+      "github": "https://github.com/EJCP3/Memory-of-you",
+      "demo": "https://memoryofyou00.netlify.app"
+    }
+   
+
+  ],
+  "skills": [
+    "react.js",
+    "javaScript",
+    "supabase",
+    "html",
+    "css",
+    "scss",
+    "tailwind CSS",
+    "astro",
+    "figma",
+    "github",
+    "daisyUI",
+    "vite"
+  ]
+}

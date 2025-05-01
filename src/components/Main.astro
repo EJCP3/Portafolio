@@ -1,0 +1,35 @@
+---
+import Cv from "./main/Cv.astro";
+import Projects from "./main/Projects.astro";
+
+import LinkSocial from "./main/LinkSocial.astro";
+import BtnEmail from "./main/BtnEmail.astro";
+import Backgrounds from "./main/backgrounds.astro";
+---
+
+<main class="grid grid-cols-4 gap-2 mt-4 mx-2">
+  <Projects />
+  <Cv />
+  <LinkSocial href="https://github.com/EJCP3">
+    <img src="/Github.svg" alt="PlayStore" class="w-20 h-20" />
+    GitHub
+  </LinkSocial>
+  <LinkSocial href="https://www.linkedin.com/in/euddycabrera/">
+    <img src="/Linkedin.svg" alt="PlayStore" class="w-20 h-20" />
+    LinkedIn
+  </LinkSocial>
+  <BtnEmail />
+  <Backgrounds />
+  
+</main>
+
+<script type="module">
+  document.querySelectorAll(".modal-wrapper").forEach((wrapper) => {
+    const modal = wrapper.querySelector("dialog");
+    const openBtn = wrapper.querySelector(".modal-btn");
+    const closeBtn = wrapper.querySelector(".modal-close");
+
+    openBtn?.addEventListener("click", () => modal?.showModal());
+    closeBtn?.addEventListener("click", () => modal?.close());
+  });
+</script>

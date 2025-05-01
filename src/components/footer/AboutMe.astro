@@ -1,0 +1,28 @@
+---
+import Modal from "../main/Modal.astro";
+import IconAbout from "../../icons/IconAbout.astro";
+import { basics } from "@cv";
+
+---
+
+<Modal name="About Me" background="/Contacts.svg" size="w-20 h-20"> 
+    <Fragment slot="icon"><IconAbout/></Fragment>
+    
+    <article class="relative dark:bg-gray-900 p-6 rounded-2xl max-w-sm mx-auto ">
+        <h1 class="text-3xl font-bold mb-2">Hey, soy {basics.name}</h1>
+        <h2  class="text-lg text-gray-500 mb-4 font-light p-2">{basics.titular}</h2>
+        <p class="font-light text-sm leading-relaxed text-gray-700 dark:text-gray-300 mb-2">{basics.resumen}</p>
+    </article>
+
+
+  
+    <a 
+      class="mt-4 inline-flex items-center justify-center px-5 py-2 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-800 transition z-10 relative">
+        Tecnologia
+    </a>
+
+</Modal>
+
+<style>
+
+</style>
