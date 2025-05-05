@@ -20,47 +20,63 @@
   },
   "fondo": {
     "movil": [
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png"
+      "/movil/BM1.webp",
+      "/movil/BM2.jpg",
+      "/movil/BM3.jpg",
+      "/movil/BM4.jpg",
+      "/movil/BM5.jpg",
+      "/movil/BM6.jpg",
+      "/movil/BM7.jpg",
+      "/movil/BM8.jpg",
+      "/movil/BM9.jpg",
+      "/movil/BM10.jpg"
     ],
 
     "desktop": [
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png",
-      "https://i.imgur.com/0r1v2aH.png"
+      "/desktop/BP1.jpg",
+      "/desktop/BP2.svg",
+      "/desktop/BP3.svg",
+      "/desktop/BP4.png",
+      "/desktop/BP5.jpg",
+      "/desktop/BP6.jpg",
+      "/desktop/BP7.jpg",
+      "/desktop/BP8.jpg",
+      "/desktop/BP9.jpg",
+      "/desktop/BP10.jpg"
     ]
   },
 
   "projects": [
     {
       "name": "Gatopia - Mini red social para adopción de gatos",
-      "img": "/Gatopia.png",
+      "img": "/proyecto/gatopia.jpeg",
       "description": "Plataforma interactiva para publicar contenido, gestionar adopciones y donaciones.",
       "technologies": ["React.js", "Sass", "supabase", "React Suite"],
       "github": "https://github.com/EJCP3/_Gatopia"
     },
     {
       "name": "Memory of you - App de getion de recuerdos",
-      "img": "/memory.png",
+      "img": "/proyecto/memory.jpeg",
       "description": "Aplicación para gestionar recuerdos y fotos de seres queridos.",
       "technologies": ["React.js", "tailwind CSS", "vite"],
       "github": "https://github.com/EJCP3/Memory-of-you",
       "demo": "https://memoryofyou00.netlify.app"
+    },
+    {
+      "name": "Rest countries api",
+      "img": "/proyecto/countries.jpeg",
+      "description": "Pagina para ver todos los países por medio de consumir una API y pudiendo ver mas detalle sobre el país.",
+      "technologies": ["React.js", "tailwind CSS", "daisyUI"],
+      "github": "https://github.com/EJCP3/rest-countries-api",
+      "demo": "https://countriesfind.netlify.app/"
+    },
+    {
+      "name": "My task bard",
+      "img": "/proyecto/task.jpeg",
+      "description": "Aplicación para gestionar tareas con un diseño minimalista y moderno.",
+      "technologies": ["React.js", "tailwind CSS", "vite"],
+      "github": "https://github.com/EJCP3/Memory-of-you",
+      "demo": "https://mytaskboardejcp.netlify.app"
     }
    
 
@@ -72,7 +88,7 @@
     "html",
     "css",
     "scss",
-    "tailwind CSS",
+    "tailwindcss",
     "astro",
     "figma",
     "github",

@@ -6,3 +6,17 @@
 body {
   @apply bg-white
 }
+
+/* Para activar transformaciones 3D */
+.transform-style {
+  transform-style: preserve-3d;
+}
+
+/* Rotaciones al hacer hover */
+.group-hover\:rotate-x-6:hover {
+  transform: rotateX(6deg);
+}
+
+.group-hover\:rotate-y-6:hover {
+  transform: rotateY(6deg);
+}

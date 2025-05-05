@@ -1,36 +1,26 @@
 ---
 import Modal from "../main/Modal.astro";
 import IconSkill from "../../icons/IconSkill.astro";
+import CardSkill from "./CardSkill.astro";
+import { TAGS } from "../main/Tags";
+
+const tagsArray = Object.entries(TAGS);
 ---
 
 <Modal name="Skills" background="/spotify.svg" size="w-17 h-20">
   <Fragment slot="icon"><IconSkill /></Fragment>
-
-  <article >
-    <h2 class="text-lg text-gray-500 mb-4 font-light p-2">Tecnologias</h2>
-    <div
-    class="bg-white p-4 rounded-xl text-white w-20  "
-  >
-    <div class="bg-white rounded-lg overflow-hidden relative h-20 mb-3">
-      <img
-        src="/icons/javascript-icon.png"
-        alt="JavaScript"
-        class="object-contain w-full h-full"
-      />
-      <div class="absolute top-2 left-2">
-        <img
-          src="/icons/spotify-logo.svg"
-          alt="Spotify"
-          class="w-4 h-4 opacity-70"
-        />
-      </div>
-      <div class="absolute top-2 w-full text-center">
-        <p class="text-xs font-semibold text-black tracking-widest">THIS IS</p>
-        <h3 class="text-black text-lg font-bold text-center "> JavaScript</h3>
-      </div>
-    </div>
-
-  </div>
+  <h2 class="text-lg text-gray-500 mb-4 font-light p-2">Tecnologias</h2>
+  <article class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  place-items-center  gap-y-4  place-self-center ">
+    {
+      tagsArray.map(([key, tag]) => {
+        return (
+          <CardSkill title={tag.name} icon={tag.img} bgColor={tag.class} />
+        );
+      })
+    }
   </article>
- 
 </Modal>
+
+<script>
+ 
+</script>

@@ -5,6 +5,7 @@ import Projects from "./main/Projects.astro";
 import LinkSocial from "./main/LinkSocial.astro";
 import BtnEmail from "./main/BtnEmail.astro";
 import Backgrounds from "./main/backgrounds.astro";
+import Pinterest from "./main/Pinterest.astro";
 ---
 
 <main class="grid grid-cols-4 gap-2 mt-4 mx-2">
@@ -20,10 +21,23 @@ import Backgrounds from "./main/backgrounds.astro";
   </LinkSocial>
   <BtnEmail />
   <Backgrounds />
-  
+  <Pinterest />
 </main>
 
 <script type="module">
+  function openModal(id) {
+    // Cierra todos los modales abiertos
+
+    
+    document.querySelectorAll(".modal-wrapper dialog[open]").forEach(dialog => {
+      dialog.close();
+    });
+
+    // Abre el que coincida con el ID
+    const target = document.querySelector(`[data-modal-id="${id}"] dialog`);
+    target?.showModal();
+  }
+
   document.querySelectorAll(".modal-wrapper").forEach((wrapper) => {
     const modal = wrapper.querySelector("dialog");
     const openBtn = wrapper.querySelector(".modal-btn");
@@ -31,5 +45,20 @@ import Backgrounds from "./main/backgrounds.astro";
 
     openBtn?.addEventListener("click", () => modal?.showModal());
     closeBtn?.addEventListener("click", () => modal?.close());
+    modal?.addEventListener("click", (e)=> {
+      if(e.target === modal){
+        modal?.close()
+      }
+    })
+
   });
+
+
+
+  // Escuchar evento global para abrir modal por ID
+  window.addEventListener("modal:open", (e) => {
+    console.log(`Opening modal with ID: ${e.detail}`);
+    openModal(e.detail);
+  });
+  
 </script>

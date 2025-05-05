@@ -1,0 +1,44 @@
+---
+import Code from "~/icons/Code.astro";
+
+const { title, icon, bgColor, iconSize } = Astro.props;
+---
+
+<div
+  class="card flex flex-col cursor-pointer w-40 h-58 rounded-lg overflow-hidden "
+>
+<Code class="size-4 m-1 opacity-50"/>
+  <div class="bg-white p-4 text-center">
+    <p class="text-xs uppercase tracking-wider text-gray-500 m-0">This is</p>
+    <h2 class="text-xl font-bold mt-1 mb-0">{title}</h2>
+  </div>
+
+  <div
+    class=`flex-1 flex items-center justify-center relative transition-transform duration-500 ease-in-out card-bottom ${bgColor}`
+  >
+    <img
+      src={icon}
+      alt={title}
+      class={`card-icon w-20 transition-transform duration-500 ease-in-out  ${iconSize}`}
+    />
+  </div>
+</div>
+
+<style>
+  .card {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: translateZ(0);
+  }
+
+  .card-bottom {
+    transform-style: preserve-3d;
+  }
+
+  .card-icon {
+    will-change: transform;
+  }
+
+  .card:hover .card-icon {
+    transform: scale(1.15);
+  }
+</style>

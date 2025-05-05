@@ -1,17 +1,136 @@
 ---
+import { basics } from "@cv";
+import { json } from "stream/consumers";
+import { social_icons } from "./iconKeyboard";
+const { profiles } = basics;
+
+const pages = ["aboutme", "projects", "skills", "backgrounds", "switch"];
+
+
+
+const profileInfo = profiles.map(({ network, url }) => {
+  const fistLetter = network[0].toUpperCase();
+  const icon = social_icons[network]
+
+  return {
+    id: network,
+    title: `Visitar ${network}`,
+    hotkey: `ctrl+${fistLetter}`,
+    section: "Social",
+    icon,
+    url,
+  };
+});
+
+const pagesInfo = pages.map(( page ) => {
+  const icon = social_icons[page]
+
+  const fistLetter = page[0].toUpperCase();
+  const pageTitulo = page.charAt(0).toUpperCase() + page.slice(1).replace("-", " ");
+
+  return {
+    id: page,
+    title: `Abrir ${pageTitulo}`,
+    hotkey: `ctrl+${fistLetter}`,
+    section: "Pages",
+    icon
+  };
+});
 
 ---
 
 <section>
-    <div id="footer-button" class="no-print">
-      <img src="/Setting.svg" alt="">
-      </div>
-      
-      <div
-        id="hotkeypad"
-        data-placeholder="Buscar comando"
-       
-      >
-      </div>
-      
+  <picture id="btn-open" class="no-print">
+    <img src="/Setting.svg" alt="" />
+  </picture>
+
+  <div class="hidden">
+    Pulsa <kbd>Cmd</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.
+  </div>
+
+  <ninja-keys
+    data-info={JSON.stringify(profileInfo)}
+    data-pages={JSON.stringify(pagesInfo)}
+    placeholder="Buscar comando"
+    hideBreadcrumbs
+  >
+  </ninja-keys>
 </section>
+
+<script>
+  import { social_icons } from "./iconKeyboard";
+  import "ninja-keys";
+  const ninja = document.querySelector("ninja-keys");
+
+  const btnOpen = document.querySelector("#btn-open");
+  
+  btnOpen?.addEventListener("click", () => {
+    var event = new KeyboardEvent("keydown", {
+      key: "K",
+      code: "KeyK",
+      keyCode: 75,
+      which: 75,
+      ctrlKey: true,
+      altKey: false,
+      shiftKey: false,
+      metaKey: false,
+    });
+
+    document.dispatchEvent(event);
+  });
+
+  if (ninja !== null) {
+    const info = ninja.getAttribute("data-info") ?? "[]";
+    const pages = ninja.getAttribute("data-pages") ?? "[]";
+
+
+    const dataInfo = JSON.parse(info);
+    const datapages = JSON.parse(pages);
+
+
+    const data = dataInfo.map((item: any) => {
+      return {
+        ...item,
+        handler: () => {
+          window.open(item.url, "_blank");
+        },
+      };
+    });
+    const dataPage = datapages.map((item: any) => {
+     
+      return {
+        ...item,
+        handler: () => {
+          window.dispatchEvent(new CustomEvent("modal:open", { detail: item.id }));
+          console.log(item.id);
+        },
+      };
+    });
+
+    ninja.data = [
+      {
+        id: "CV",
+        title: "Descargar Resumen",
+        hotkey: "ctrl+r",
+        icon: social_icons.pdf,
+        section: "Projects",
+        handler: () => {
+          window.open("/CV.pdf", "_blank");
+        },
+
+      },
+      {
+        id: "Background",
+        title: "Cambiar de fondo",
+        hotkey: "ctrl+f",
+        icon: social_icons.switch,
+        section: "Projects",
+        handler: () => {
+         window.bg.click();
+        },
+      },
+      ...dataPage,
+      ...data,
+    ];
+  }
+</script>

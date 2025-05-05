@@ -1,0 +1,55 @@
+<button class="text-sm text-gray-500 text-center" id="bg">
+  <img class="w-18 h-18" src="/pinterest.svg" alt="" />
+  background fast
+</button>
+
+<script>
+  import { Notyf } from "notyf";
+  const notyf = new Notyf({
+    duration: 2000,
+    position: {
+      x: "center",
+      y: "top",
+    },
+    types: [
+      {
+        type: "loading",
+        background: "#3498db",
+        dismissible: false, // no permitir cerrarlo manualmente
+      },
+    ],
+  });
+
+  const btnCambiarFondo = document.getElementById("bg");
+  window.bg = btnCambiarFondo; // Aquí se crea la referencia global
+
+  btnCambiarFondo?.addEventListener("click", (e) => {
+    const randomNumber = Math.floor(Math.random() * 1001);
+    const anchoPantalla = window.innerWidth;
+    const altoPantalla = window.innerHeight;
+    const url = `https://picsum.photos/${anchoPantalla}/${altoPantalla}?random=${randomNumber}`;
+    const body = document.body;
+    const viejaImg = body.style.backgroundImage;
+
+    const nuevaImagen = new Image();
+    nuevaImagen.src = url;
+    notyf.open({
+      type: "loading",
+      message: `Cargando imagen...`,
+      duration: 0, // Se cierra manualmente
+    });
+
+    nuevaImagen.onload = () => {
+      notyf.dismissAll();
+      body.style.backgroundImage = `url(${url})`;
+      notyf.success("Nuevo fondo agregado correctamente");
+    };
+
+    nuevaImagen.onerror = () => {
+      console.error("Error al cargar la nueva imagen");
+      body.style.backgroundImage = viejaImg;
+    };
+  });
+</script>
+
+<style></style>

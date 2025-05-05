@@ -1,11 +1,42 @@
 ---
 import Modal from "./Modal.astro";
 import Background from "~/icons/background.astro";
+import {fondo} from '@cv'
+
+
+
 ---
 
 <Modal name="Backgrounds" background="/Fondo.svg">
   <Fragment slot="icon"><Background /></Fragment>
-  <figure>
-    
+  <figure class="">
+    <div class="bg grid grid-cols-3 gap-4 p-4 md:hidden">
+    {
+      fondo.movil.map((item, index) => (
+        <img  src={item} alt={`background` + index} class="w-full h-[150px]" />
+      ))
+    }
+    </div>
+    <div class="bg hidden md:grid grid-cols-2 gap-4 p-4">
+      {
+        fondo.desktop.map((item, index) => (
+          <img src={item} alt={`background` + index} class="w-full h-auto" />
+        ))
+      }
+      </div>
   </figure>
 </Modal>
+
+<script>
+
+  const conteBG = document.querySelectorAll('.bg img')
+
+  conteBG.forEach((item) => {
+    item.addEventListener('click', () => {
+     const body = document.body
+     body.style.backgroundImage = `url(${item.src})`
+
+    })
+  })
+
+</script>
