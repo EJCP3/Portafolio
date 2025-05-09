@@ -1,10 +1,35 @@
 ---
 import AboutMe from "./footer/AboutMe.astro";
+import Hora from "./footer/Hora.astro";
 import Skill from "./footer/Skill.astro";
-
 ---
 
-<footer class=" flex justify-center  text-center gap-3 mt-20"> 
-<AboutMe/>
-  <Skill/>
+<footer
+  class="md:bg-gradient-to-r md:from-black/40 md:via-black/20 md:to-black/40 md:backdrop-blur-lg md:w-full h-24 flex justify-center text-center gap-4 mt-20 md:self-end md:absolute z-10 text-white md:justify-around md:items-center"
+>
+  <div class="hidden md:block">
+    <p id="clima" class="text-sm font-bold"></p>
+  </div>
+  <div class="flex gap-x-6">
+    <AboutMe />
+    <Skill />
+  </div>
+  <div class="hidden md:flex md:gap-x-6 md:items-center justify-center">
+      <Hora/>
+  </div>
 </footer>
+
+<!-- <script>
+  const dataclima =
+    "http://api.weatherapi.com/v1/current.json?key=472e0e0dc0844e6b9c3234807250605&q=Santo%20Domingo&aqi=no";
+
+  const clima = document.getElementById("clima");
+
+  const getClima = async () => {
+    const response = await fetch(dataclima);
+    const data = await response.json();
+    console.log(data);
+    clima.innerHTML = `${data.current.condition.text} ${data.current.temp_c}°C`;
+  };
+  getClima();
+</script> -->

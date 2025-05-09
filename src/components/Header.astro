@@ -1,66 +1,66 @@
 ---
-import KeyBoardSearch from "./KeyBoardSearch.astro";
+import Hora from "./footer/Hora.astro";
+import ClockHora from "./header/ClockHora.astro";
+import KeyBoardSearch from "./header/KeyBoardSearch.astro";
+import Spin from "./spin.astro";
 ---
 
-<header class="flex justify-between mt-4">
-  <div class="flex flex-col justify-center items-center h-16 relative cursor-pointer ">
-    <KeyBoardSearch/>
-  </div>
-  <div class="flex flex-col justify-center items-center h-16 relative">
-    <p class="text-sm"><span class="mouth"></span> <span class="day"></span></p>
-    <p class="text-4xl font-bold mb-4"><span class="hours"></span>:<span class="minute"></span></p>
-  </div>
-  <div class="flex-col justify-center items-center relative hidden">
-    <p>If u can imagine it, u can program it</p>
-  </div>
-  
+<header
+  class="flex justify-between gap-x-6 mb-8 md:order-last md:flex-col md:gap-8 md:gap-x-0 md:items-center md:w-100 md:h-11/12 py-4 md:justify-start md:mt-0"
+>
+  <article
+    class="flex flex-col justify-center items-center h-16 relative cursor-pointer  md:mr-60 "
+  >
+    <KeyBoardSearch />
+  </article>
+
+  <article class="flex flex-col justify-center items-center h-16 relative">
+    <!-- <Hora /> -->
+     <ClockHora/>
+  </article>
+
+  <article class="hidden md:block px-8 md:mr-60" id="imagine">
+    <p id="text" class="text-sm transition-all duration-500">
+      If u can imagine it, u can program it
+    </p>
+    <Spin />
+  </article>
 </header>
 
 <script>
+  const imagine = document.getElementById("imagine");
+  const parrafo = document.getElementById("text");
 
-    const timeToday = new Date();
-    // const mouth = timeToday.getMonth() + 1; // Months are zero-based in JavaScript
-    const day = String(timeToday.getDate())
-    const hour = String(timeToday.getHours())
-    const minute = String(timeToday.getMinutes())
-    const mouth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][timeToday.getMonth()];
-    
-    console.log(mouth, day, hour, minute);
+  let texto = true;
 
-    const classHour = document.querySelector('.hours');
-    const classMinute = document.querySelector('.minute');
-    const classMouth = document.querySelector('.mouth');
-    const classDay = document.querySelector('.day');
-    if (classHour && classMinute && classMouth && classDay) {
-        classDay.innerHTML = day;
-        classHour.innerHTML = hour;
-        classMinute.innerHTML = minute;
-        classMouth.innerHTML = mouth;
+  imagine?.addEventListener("click", (e) => {
+    texto = !texto;
 
-    }
+    const newTexto = texto
+      ? "If u can imagine it, u can program it"
+      : "Puede imaginarlo, puede programarlo";
 
-    console.log(`Current date: ${timeToday.getDate()}/${mouth}/${timeToday.getFullYear()}`);
-    console.log(mouth);
-
+    parrafo.innerText = newTexto;
+  });
 </script>
 
 <style>
-  div {
+  article {
     width: 129.23px;
     height: 130px;
     background-size: cover;
     background-position: center;
   }
 
-  div {
+  article {
     background-image: url("/StarSeach.svg");
   }
 
-  div:nth-child(2) {
+  article:nth-child(2) {
     background-image: url("/StarTime.svg");
   }
 
-  div:last-child {
+  article:last-child {
     background-image: url("/StarIF.svg");
   }
 </style>

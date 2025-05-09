@@ -1,0 +1,70 @@
+<div class="text-center">
+  <p class="text-xl font-bold  text-right">
+    <span class="hours"></span>:<span class="minute"></span>
+  </p>
+  <p class="text-xl font-light  ">
+    <span class="dayDate"></span>/<span class="mouthDate"></span>/<span class="yearDate"
+    ></span>
+  </p>
+</div>
+
+<script>
+
+
+    const timeToday = new Date();
+    const day = String(timeToday.getDate());
+    const hour = String(timeToday.getHours());
+    const minute = String(timeToday.getMinutes());
+    const year = String(timeToday.getFullYear());
+    const mouth = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+    const mouthnow = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ][timeToday.getMonth()];
+
+   
+
+    const classHour = document.querySelector(".hours");
+    const classMinute = document.querySelector(".minute");
+    const classMouthDate = document.querySelector(".mouthDate");
+    const classDayDate = document.querySelector(".dayDate");
+     const classYear = document.querySelector(".yearDate");
+
+    if (
+      year &&
+      classHour &&
+      classMinute &&
+      classMouthDate &&
+      classDayDate
+    ) {
+      classHour.innerHTML = hour;
+      classMinute.innerHTML = minute;
+      classMouthDate.innerHTML = mouth.indexOf(mouthnow) + 1;
+      classYear.innerHTML = year;
+      classDayDate.innerHTML = day;
+    }
+  
+</script>

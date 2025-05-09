@@ -1,12 +1,12 @@
 ---
 import Close from "~/icons/Close.astro";
 
-const { name, background, size, width } = Astro.props;
+const { name, background, size, width, margin, tamaño } = Astro.props;
 const id = name.toLowerCase().replace(/\s+/g, "-"); // ID único por nombre
 ---
 
 <section class="modal-wrapper" data-modal-id={id}>
-  <dialog class=`${width} modal  rounded outline-none bg-white p-0`>
+  <dialog class=`${width} modal  rounded outline-none  p-0 `>
     <header class="flex justify-between items-center mb-4">
       <h2
         class="flex justify-center items-center gap-2 text-2xl font-bold text-center"
@@ -19,12 +19,25 @@ const id = name.toLowerCase().replace(/\s+/g, "-"); // ID único por nombre
     <slot />
   </dialog>
 
-  <figure class="modal-btn cursor-pointer">
+  <figure class=`modal-btn cursor-pointer ${margin}`>
     <img src={background} alt={name} class={size} />
-    <figcaption class="text-sm text-gray-500">{name}</figcaption>
+    <figcaption
+      class=`text-base text-white mix-blend-difference outline-pink-500  text-center font-light ${tamaño}`
+    >
+      {name}
+    </figcaption>
   </figure>
 </section>
 
 <style>
- 
+  dialog::backdrop {
+    background: white;
+    z-index: -1;
+  }
+
+  @media (min-width: 768px) {
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.199);
+    }
+  }
 </style>

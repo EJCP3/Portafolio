@@ -8,30 +8,32 @@ import Backgrounds from "./main/backgrounds.astro";
 import Pinterest from "./main/Pinterest.astro";
 ---
 
-<main class="grid grid-cols-4 gap-2 mt-4 mx-2">
+<main
+  class="max-w-105 flex flex-wrap gap-x-3 mt-4 px-4 justify-baseline items-baseline md:order-first md:flex-col md:mt-0 md:justify-normal md:gap-y-8 md:items-center md:h-10/12"
+>
   <Projects />
   <Cv />
-  <LinkSocial href="https://github.com/EJCP3">
-    <img src="/Github.svg" alt="PlayStore" class="w-20 h-20" />
-    GitHub
-  </LinkSocial>
-  <LinkSocial href="https://www.linkedin.com/in/euddycabrera/">
-    <img src="/Linkedin.svg" alt="PlayStore" class="w-20 h-20" />
-    LinkedIn
-  </LinkSocial>
+  <LinkSocial href="https://github.com/EJCP3" img="/Github.svg" name="GitHub" />
+
+  <LinkSocial
+    href="https://www.linkedin.com/in/euddycabrera/"
+    img="Linkedin.svg"
+    name="Linkedin"
+  />
+
   <BtnEmail />
-  <Backgrounds />
+
+  <Backgrounds /> 
   <Pinterest />
 </main>
 
 <script type="module">
   function openModal(id) {
-    // Cierra todos los modales abiertos
-
-    
-    document.querySelectorAll(".modal-wrapper dialog[open]").forEach(dialog => {
-      dialog.close();
-    });
+    document
+      .querySelectorAll(".modal-wrapper dialog[open]")
+      .forEach((dialog) => {
+        dialog.close();
+      });
 
     // Abre el que coincida con el ID
     const target = document.querySelector(`[data-modal-id="${id}"] dialog`);
@@ -45,20 +47,16 @@ import Pinterest from "./main/Pinterest.astro";
 
     openBtn?.addEventListener("click", () => modal?.showModal());
     closeBtn?.addEventListener("click", () => modal?.close());
-    modal?.addEventListener("click", (e)=> {
-      if(e.target === modal){
-        modal?.close()
+    modal?.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal?.close();
       }
-    })
-
+    });
   });
-
-
 
   // Escuchar evento global para abrir modal por ID
   window.addEventListener("modal:open", (e) => {
     console.log(`Opening modal with ID: ${e.detail}`);
     openModal(e.detail);
   });
-  
 </script>

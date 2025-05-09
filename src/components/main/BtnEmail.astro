@@ -1,13 +1,13 @@
 ---
 
 ---
-
-<a class="text-sm text-gray-500 text-center" id="copy">
-  <img class="w-20 h-20" src="/Email.svg" alt="euddycabrera03@gmail.com" />
+<div class="flex flex-col justify-center items-center md:w-15 md:h-10">
+<a  class="text-base text-white font-normal  text-center" id="copy">
+  <img class="w-20 h-20 md:w-15 md:h-10" src="/Email.svg" alt="euddycabrera03@gmail.com" />
   Email
   <p class="hidden" id="copy1">euddycabrera03@gmail.com</p>
 </a>
-
+</div>
 <script>
 import { Notyf } from 'notyf';
 const notyf = new Notyf({
@@ -24,7 +24,6 @@ const notyf = new Notyf({
   const btnEmail = document.getElementById("copy");
   const btnEmail1 = document.getElementById("copy1").innerText;
 
-  console.log(btnEmail1);
   btnEmail?.addEventListener("click", (e) => {
     const text = e.target.alt || btnEmail1;
 

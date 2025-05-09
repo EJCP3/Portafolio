@@ -3,14 +3,25 @@ import Modal from "../main/Modal.astro";
 import IconSkill from "../../icons/IconSkill.astro";
 import CardSkill from "./CardSkill.astro";
 import { TAGS } from "../main/Tags";
+import { undefined } from "astro:schema";
 
 const tagsArray = Object.entries(TAGS);
+
+
+let name = false 
+
+if (typeof window !== "undefined") {
+  const pixel = window.innerWidth;
+  pixel > 768 ? name = true : name = false  
+}
+
+
 ---
 
-<Modal name="Skills" background="/spotify.svg" size="w-17 h-20">
+<Modal name="Tecnología" background="/spotify.svg" size="w-17 h-20 md:w-10 md-10" width="w-full mx-auto mt-2 max-w-[900px] " tamaño="md:text-text-lg"  margin="md:pb-4">
   <Fragment slot="icon"><IconSkill /></Fragment>
-  <h2 class="text-lg text-gray-500 mb-4 font-light p-2">Tecnologias</h2>
   <article class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  place-items-center  gap-y-4  place-self-center ">
+   
     {
       tagsArray.map(([key, tag]) => {
         return (
@@ -22,5 +33,6 @@ const tagsArray = Object.entries(TAGS);
 </Modal>
 
 <script>
- 
+
+
 </script>

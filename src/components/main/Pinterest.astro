@@ -1,7 +1,9 @@
-<button class="text-sm text-gray-500 text-center" id="bg">
-  <img class="w-18 h-18" src="/pinterest.svg" alt="" />
-  background fast
-</button>
+<div class="">
+  <button class="md:w-10 text-base text-white font-normal text-center" id="bg">
+    <img class="w-18 h-18 md:w-12 md:h-10" src="/pinterest.svg" alt="" />
+    Fondo rápido
+  </button>
+</div>
 
 <script>
   import { Notyf } from "notyf";
@@ -46,8 +48,19 @@
     };
 
     nuevaImagen.onerror = () => {
-      console.error("Error al cargar la nueva imagen");
-      body.style.backgroundImage = viejaImg;
+      const intentoImagen = new Image();
+      intentoImagen.src = url;
+      intentoImagen.onload = () => {
+        notyf.dismissAll();
+        body.style.backgroundImage = `url(${url})`;
+        notyf.success("Nuevo fondo agregado tras reintento");
+      };
+      intentoImagen.onerror = () => {
+        body.style.backgroundImage = viejaImg;
+        notyf.error(
+          "No se pudo cargar el nuevo fondo. Restaurado el anterior."
+        );
+      };
     };
   });
 </script>

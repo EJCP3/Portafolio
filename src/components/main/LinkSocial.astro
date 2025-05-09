@@ -1,10 +1,12 @@
 
 ---
-const { href } = Astro.props;
+const { href, img, name } = Astro.props;
 ---
 
 
-
-<a class="text-sm text-gray-500 text-center" href={href}  role="link" target="_blank">
-   <slot />
+<div class="flex flex-col justify-center items-center md:w-13 md:h-10">
+<a class="text-base text-white text-center font-normal" href={href}  role="link" target="_blank">
+  <img src={img} alt={name} class="w-20 h-20 md:w-15 md:h-10" />
+  {name}
   </a>
+</div>

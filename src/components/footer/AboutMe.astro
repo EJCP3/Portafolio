@@ -4,30 +4,41 @@ import IconAbout from "../../icons/IconAbout.astro";
 import { basics } from "@cv";
 ---
 
-<Modal name="About me" background="/Contacts.svg" size="w-20 h-20" 
-  
+<Modal
+  name="Mi"
+  background="/Contacts.svg"
+  size="w-20 h-20 md:w-12 "
+  margin="md:pb-4"
+  width="mx-auto h-[520px] "
+  tamaño="md:text-text-lg"
 >
   <Fragment slot="icon"><IconAbout /></Fragment>
 
-  <article class="flex flex-col items-center justify-center gap-y-4 relative dark:bg-gray-900 p-6 rounded-2xl max-w-sm mx-auto">
+  <article
+    class="flex flex-col items-center justify-center gap-y-4 relative dark:bg-gray-900 p-6 rounded-2xl max-w-sm mx-auto"
+  >
     <h1 class="text-3xl font-bold mb-2">Hey, soy {basics.name}</h1>
-    <h2 class="text-left text-lg text-gray-500  font-light ">{basics.titular}</h2>
+    <p class="text-left text-lg text-gray-500 font-light leading-relaxed">{basics.titular}</p>
     <p
-      class="text-left font-light text-sm leading-relaxed  text-gray-700 dark:text-gray-300 "
+      class="text-left font-light text-sm leading-relaxed text-gray-700 dark:text-gray-300"
     >
       {basics.resumen}
     </p>
   </article>
 
-  <a onclick="window.dispatchEvent(new CustomEvent('modal:open', { detail: 'skills' }))"
+  <a
+    onclick="window.dispatchEvent(new CustomEvent('modal:open', { detail: 'tecnología' }))"
     id="btnModal"
-    class="mt-4 inline-flex items-center justify-center px-5 py-2 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-800 transition z-10 relative"
+    class="mt-4 inline-flex items-center justify-center px-5 py-2 text-white font-medium rounded-xl z-10 relative bg-blue-500 transition delay-150 duration-700 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500"
   >
     Tecnologia
-    
+    <span class="relative flex size-3">
+      <span
+        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-800 opacity-75"
+      ></span>
+      <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+    </span>
   </a>
 </Modal>
 
-<script>
-
-</script>
+<script></script>

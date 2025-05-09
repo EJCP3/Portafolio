@@ -7,7 +7,7 @@ import {fondo} from '@cv'
 
 ---
 
-<Modal name="Backgrounds" background="/Fondo.svg">
+<Modal name="Fondos" background="/Fondo.svg" width="w-full h-screen px-2 md:w-[600px] max-w-screen-2xl mx-auto p-0 mt-4" size="md:w-15 md:h-10"  >
   <Fragment slot="icon"><Background /></Fragment>
   <figure class="">
     <div class="bg grid grid-cols-3 gap-4 p-4 md:hidden">
@@ -20,7 +20,7 @@ import {fondo} from '@cv'
     <div class="bg hidden md:grid grid-cols-2 gap-4 p-4">
       {
         fondo.desktop.map((item, index) => (
-          <img src={item} alt={`background` + index} class="w-full h-auto" />
+          <img src={item} alt={`background` + index} class="w-full h-auto hover:scale-105 transition duration-500" />
         ))
       }
       </div>
@@ -28,15 +28,25 @@ import {fondo} from '@cv'
 </Modal>
 
 <script>
-
+  const modal = document.getElementsByClassName('modal-wrapper')[1]
   const conteBG = document.querySelectorAll('.bg img')
+
+  
+  const modal1 = modal.dataset.modalId
 
   conteBG.forEach((item) => {
     item.addEventListener('click', () => {
      const body = document.body
      body.style.backgroundImage = `url(${item.src})`
+    
+
+    const target = document.querySelector(`[data-modal-id="${modal1}"] dialog`);
+    target?.close();
 
     })
   })
+
+  
+
 
 </script>

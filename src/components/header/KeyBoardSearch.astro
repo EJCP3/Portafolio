@@ -1,10 +1,9 @@
 ---
 import { basics } from "@cv";
-import { json } from "stream/consumers";
-import { social_icons } from "./iconKeyboard";
+import { social_icons } from "./IconKeyboard.ts";
 const { profiles } = basics;
 
-const pages = ["aboutme", "projects", "skills", "backgrounds", "switch"];
+const pages = ["mi", "proyectos", "tecnología", "fondos"];
 
 
 
@@ -23,16 +22,18 @@ const profileInfo = profiles.map(({ network, url }) => {
 });
 
 const pagesInfo = pages.map(( page ) => {
+
   const icon = social_icons[page]
 
   const fistLetter = page[0].toUpperCase();
-  const pageTitulo = page.charAt(0).toUpperCase() + page.slice(1).replace("-", " ");
+  const pageTitulo = page.replace("_", " ");
+
 
   return {
-    id: page,
+    id: pageTitulo,
     title: `Abrir ${pageTitulo}`,
     hotkey: `ctrl+${fistLetter}`,
-    section: "Pages",
+    section: "Paginas",
     icon
   };
 });
@@ -40,12 +41,14 @@ const pagesInfo = pages.map(( page ) => {
 ---
 
 <section>
-  <picture id="btn-open" class="no-print">
+  <picture id="btn-open" class="md:hidden">
     <img src="/Setting.svg" alt="" />
   </picture>
 
-  <div class="hidden">
-    Pulsa <kbd>Cmd</kbd> + <kbd>K</kbd> para abrir la paleta de comandos.
+  <div class="hidden md:block  mb-2 text-sm px-6">
+   <p>
+    Pulsa <kbd class="font-extrabold">Cmd</kbd> + <kbd class="font-extrabold">K</kbd> para abrir la paleta de comandos.
+   </p>
   </div>
 
   <ninja-keys
@@ -58,8 +61,9 @@ const pagesInfo = pages.map(( page ) => {
 </section>
 
 <script>
-  import { social_icons } from "./iconKeyboard";
+
   import "ninja-keys";
+import { social_icons } from "./IconKeyboard";
   const ninja = document.querySelector("ninja-keys");
 
   const btnOpen = document.querySelector("#btn-open");
@@ -102,7 +106,6 @@ const pagesInfo = pages.map(( page ) => {
         ...item,
         handler: () => {
           window.dispatchEvent(new CustomEvent("modal:open", { detail: item.id }));
-          console.log(item.id);
         },
       };
     });
@@ -113,7 +116,7 @@ const pagesInfo = pages.map(( page ) => {
         title: "Descargar Resumen",
         hotkey: "ctrl+r",
         icon: social_icons.pdf,
-        section: "Projects",
+        section: "Acciones",
         handler: () => {
           window.open("/CV.pdf", "_blank");
         },
@@ -122,9 +125,9 @@ const pagesInfo = pages.map(( page ) => {
       {
         id: "Background",
         title: "Cambiar de fondo",
-        hotkey: "ctrl+f",
+        hotkey: "ctrl+a",
         icon: social_icons.switch,
-        section: "Projects",
+        section: "Acciones",
         handler: () => {
          window.bg.click();
         },

@@ -63,7 +63,7 @@
       "demo": "https://memoryofyou00.netlify.app"
     },
     {
-      "name": "Rest countries api",
+      "name": "Rest Countries Api",
       "img": "/proyecto/countries.jpeg",
       "description": "Pagina para ver todos los países por medio de consumir una API y pudiendo ver mas detalle sobre el país.",
       "technologies": ["React.js", "tailwind CSS", "daisyUI"],

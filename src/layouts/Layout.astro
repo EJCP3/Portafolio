@@ -1,34 +1,48 @@
 ---
 // Supports weights 200-900
-import '@fontsource-variable/inconsolata';
+import "@fontsource-variable/inconsolata";
 import { basics } from "@cv";
-
 ---
-
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/code.svg" />
-		<meta name="description" content={basics.titular} />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-		<meta name="generator" content={Astro.generator} />
-		<title>{basics.label}</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/code.svg" />
+    <meta name="description" content={basics.titular} />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{basics.label}</title>
+  </head>
+  <body
+    class="w-full h-screen flex flex-col md:flex-row md:justify-between items-center justify-center bg-cover bg-"
+  >
 
-	</head>
-	<body >
-		<slot />
-		
-	</body>
+    <slot />
+  </body>
 </html>
+
+<script>
+
+
+
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 <style>
-	body {
-  font-family: 'Inconsolata Variable', monospace;
-}
+  body {
+    background-image: url("/movil/BM2.jpg");
+    font-family: "Inconsolata Variable", monospace;
+   
+  }
+
+  @media (min-width: 768px) {
+    body {
+      background-image: url("/desktop/BP2.svg");
+    }
+  }
 </style>
-
-
