@@ -1,0 +1,186 @@
+---
+import Pokedex from "~/icons/pokedex.astro";
+import Modal1 from "../shared/Modal1.astro";
+
+const themes = [
+  "light",
+  "dark",
+  "cupcake",
+  "bumblebee",
+  "emerald",
+  "corporate",
+  "synthwave",
+  "retro",
+  "cyberpunk",
+  "valentine",
+  "halloween",
+  "garden",
+  "forest",
+  "aqua",
+  "lofi",
+  "pastel",
+  "fantasy",
+  "wifeframe",
+  "black",
+  "luxury",
+  "dracula",
+  "cmyk",
+  "autumn",
+  "business",
+  "acid",
+  "lemonade",
+  "night",
+  "coffee",
+  "winter",
+  "dim",
+  "nord",
+  "sunset",
+  "caramellatte",
+  "abyss",
+  "silk",
+];
+
+const pokemon = {};
+---
+
+<Modal1
+  name="Pokedex"
+  idName="Pokedex"
+  background="/pokedex.png"
+  size="w-16 h-16 md:w-14 md:h-12"
+  width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
+>
+  <Fragment slot="icon"><Pokedex /></Fragment>
+
+  <div
+    id="background"
+    class="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
+  >
+  </div>
+
+  <header
+    data-theme="valentine"
+    class="border-1 border-neutral w-55 text-center mx-auto rounded-sm bg-base-100"
+  >
+    <div class="border-b-4 border-error flex gap-x-2 text-base items-center">
+      <img class="w-7 h-8" src="/pokeball.png" />
+      <span class="">001</span>
+      <h2>pastel</h2>
+
+      <aside class="grid grid-cols-4 w-[74px] overflow-hidden ml-auto">
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+      </aside>
+    </div>
+    <div class="flex">
+      <div class="pl-8 my-1">
+        <p class="">Normal theme</p>
+        <ul class="flex flex-wrap gap-1 text-base-content my-1">
+          <li
+            class="bg-primary flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+          >
+            A
+          </li>
+          <li
+            class="bg-secondary flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+          >
+            A
+          </li>
+
+          <li
+            class="bg-accent flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+          >
+            A
+          </li>
+          <li
+            class="bg-neutral flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+          >
+            A
+          </li>
+        </ul>
+      </div>
+      <aside class="grid w-[74px] grid-cols-4 overflow-hidden ml-auto">
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+        <span class="bg-base-300 w-6 h-4"></span>
+        <span class="bg-base-200 w-6 h-4"></span>
+      </aside>
+    </div>
+  </header>
+  <!-- <article
+    data-theme="pastel"
+    class="w-30 border-base-content/20 hover:border-base-content/40 overflow-hidden rounded-lg border outline-2 outline-offset-2 outline-transparent">
+    <div class="bg-base-100 text-base-content w-full cursor-pointer">
+      <div class="grid grid-cols-5 grid-rows-3">
+        <aside class="bg-base-200 col-start-1 row-span-2 row-start-1"></aside>
+        <aside class="bg-base-300 col-start-1 row-start-3"></aside>
+        <section
+          class="bg-base-100 col-span-4 col-start-2 row-span-3 row-start-1 flex flex-col gap-1 p-2"
+        >
+          <ul class="flex flex-wrap gap-1 text-base-content">
+            <li
+              class="bg-primary flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+            >
+              A
+            </li>
+            <li
+              class="bg-secondary flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+            >
+              A
+            </li>
+
+            <li
+              class="bg-accent flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+            >
+              A
+            </li>
+            <li
+              class="bg-neutral flex aspect-square w-5 items-center justify-center rounded lg:w-6"
+            >
+              A
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </article> -->
+  <section
+     data-theme="dark" class="static  bg-white border-2 border-neutral w-[] h-70 mx-auto max-w-lg mt-2 rounded-sm"
+  >
+  <aside class="  w-12 h-full bg-red-600 border-red-200 border-r-6"></aside>
+    <ul class=" list ">
+      <li class="list-row ">  
+         <div>
+          <img
+            class="size-10 rounded-box"
+            src="/pokeball.png"
+          />
+        </div>
+        <p class="text-xl   font-extralight ">001</p>
+          <p class="text-xl font-extralight ">Light</p>
+      </li>
+    </ul>
+  </section>
+</Modal1>

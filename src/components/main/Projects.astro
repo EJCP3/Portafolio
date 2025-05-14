@@ -2,16 +2,25 @@
 import Card from "./Card.astro";
 import Code from "../../icons/Code.astro";
 
-import Modal from "./Modal.astro";
-
-
-
+// import Modal from "../shared/Modal.astro";
+import Modal1 from "../shared/Modal1.astro";
 ---
 
-<Modal  name="Proyectos" background="/PlayStore.svg" width="fixed  inset-0 w-full  px-2 md:w-[900px] max-w-screen-lg mx-auto p-0 m-0 " size="md:w-15 md:h-10"  >
-
+<!-- <Modal
+  name="Proyectos"
+  background="/PlayStore.svg"
+  size="w-auto h-auto md:w-15 md:h-10"
+>
   <Fragment slot="icon"><Code /></Fragment>
-  <Card/>
-    
-</Modal>
+  <Card />
+</Modal> -->
 
+<Modal1 idName="Proyectos"
+  name="Proyectos"
+  background="/PlayStore.svg"
+  size="w-auto h-auto md:w-15 md:h-10"
+  width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
+  >
+ <Fragment slot="icon"><Code /></Fragment>
+  <Card />
+</Modal1>

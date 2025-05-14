@@ -1,52 +1,63 @@
 ---
-import Modal from "./Modal.astro";
+import Modal from "../shared/Modal.astro";
 import Background from "~/icons/background.astro";
-import {fondo} from '@cv'
-
-
-
+import { fondo } from "@cv";
+import Modal1 from "../shared/Modal1.astro";
 ---
 
-<Modal name="Fondos" background="/Fondo.svg" width="w-full h-screen px-2 md:w-[600px] max-w-screen-2xl mx-auto p-0 mt-4" size="md:w-15 md:h-10"  >
+<Modal1
+  idName="Fondos"
+  name="Fondos"
+  background="/Fondo.svg"
+ width="bg-transparent w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl"
+  size="w-auto h-auto md:w-15 md:h-10"
+>
   <Fragment slot="icon"><Background /></Fragment>
   <figure class="">
-    <div class="bg grid grid-cols-3 gap-4 p-4 md:hidden">
     {
-      fondo.movil.map((item, index) => (
-        <img  src={item} alt={`background` + index} class="w-full h-[150px]" />
+      ["movil", "desktop"].map((type) => (
+        <div
+          key={type}
+          class:list={[
+            "bg",
+            {
+              "grid grid-cols-3 gap-4 p-4 md:hidden": type === "movil",
+              "hidden md:grid grid-cols-2 gap-4 p-4": type === "desktop",
+            },
+          ]}
+        >
+          {fondo[type].map((item, index) => (
+            <img
+              key={index}
+              src={item}
+              alt={`background${index}`}
+              loading="lazy"
+              class:list={[
+                "w-full",
+                {
+                  "h-[150px]": type === "movil",
+                  "h-auto hover:scale-105 transition duration-500":
+                    type === "desktop",
+                },
+              ]}
+            />
+          ))}
+        </div>
       ))
     }
-    </div>
-    <div class="bg hidden md:grid grid-cols-2 gap-4 p-4">
-      {
-        fondo.desktop.map((item, index) => (
-          <img src={item} alt={`background` + index} class="w-full h-auto hover:scale-105 transition duration-500" />
-        ))
-      }
-      </div>
   </figure>
-</Modal>
+</Modal1>
 
 <script>
-  const modal = document.getElementsByClassName('modal-wrapper')[1]
-  const conteBG = document.querySelectorAll('.bg img')
+  const conteBG = document.querySelectorAll(".bg img");
 
-  
-  const modal1 = modal.dataset.modalId
 
   conteBG.forEach((item) => {
-    item.addEventListener('click', () => {
-     const body = document.body
-     body.style.backgroundImage = `url(${item.src})`
+    item.addEventListener("click", () => {
+      const body = document.body;
+      body.style.backgroundImage = `url(${item.src})`;
+
     
-
-    const target = document.querySelector(`[data-modal-id="${modal1}"] dialog`);
-    target?.close();
-
-    })
-  })
-
-  
-
-
+    });
+  });
 </script>

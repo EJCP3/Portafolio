@@ -2,7 +2,9 @@
 const { class: className } = Astro.props;
 ---
 
-<span
+<!-- <span
   class=` ${className} inline-flex items-center rounded-md  px-1 py-1 text-xs font-medium  ring-1  ring-inset scale-105 hover:scale-110 transition duration-500`
   ><slot /></span
->
+> -->
+
+<span class=`${className} badge badge-soft hover:scale-110 transition duration-500`><slot/></span>

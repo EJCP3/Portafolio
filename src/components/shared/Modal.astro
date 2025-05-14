@@ -5,8 +5,8 @@ const { name, background, size, width, margin, tamaño } = Astro.props;
 const id = name.toLowerCase().replace(/\s+/g, "-"); // ID único por nombre
 ---
 
-<section class="modal-wrapper" data-modal-id={id}>
-  <dialog class=`${width} modal  rounded outline-none  p-0 `>
+<section  class="modal-wrapper" data-modal-id={id}>
+  <dialog  class=`${width} modal  rounded outline-none bg-white  p-0 `>
     <header class="flex justify-between items-center mb-4">
       <h2
         class="flex justify-center items-center gap-2 text-2xl font-bold text-center"
@@ -14,7 +14,7 @@ const id = name.toLowerCase().replace(/\s+/g, "-"); // ID único por nombre
         <slot name="icon" />
         {name}
       </h2>
-      <span class="modal-close cursor-pointer"><Close /></span>
+      <span class="modal-close cursor-pointer"><Close /></span> 
     </header>
     <slot />
   </dialog>
@@ -27,17 +27,22 @@ const id = name.toLowerCase().replace(/\s+/g, "-"); // ID único por nombre
       {name}
     </figcaption>
   </figure>
+    <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
 </section>
 
-<style>
-  dialog::backdrop {
-    background: white;
-    z-index: -1;
-  }
 
-  @media (min-width: 768px) {
+
+<style>
+  /* dialog::backdrop {
+  background: linear-gradient(to bottom left, #ffe4e6, #ccfbf1);
+    z-index: -1;
+  } */
+
+  /* @media (min-width: 768px) {
     dialog::backdrop {
       background: rgba(0, 0, 0, 0.199);
     }
-  }
+  } */
 </style>

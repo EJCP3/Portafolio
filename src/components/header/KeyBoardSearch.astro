@@ -1,6 +1,7 @@
 ---
 import { basics } from "@cv";
-import { social_icons } from "./IconKeyboard.ts";
+import { social_icons } from "../data/IconKeyboard.ts";
+
 const { profiles } = basics;
 
 const pages = ["mi", "proyectos", "tecnología", "fondos"];
@@ -40,14 +41,14 @@ const pagesInfo = pages.map(( page ) => {
 
 ---
 
-<section>
+<section  />
   <picture id="btn-open" class="md:hidden">
-    <img src="/Setting.svg" alt="" />
+    <img class="w-auto h-auto" src="/Setting.svg" alt="setting" />
   </picture>
 
-  <div class="hidden md:block  mb-2 text-sm px-6">
-   <p>
-    Pulsa <kbd class="font-extrabold">Cmd</kbd> + <kbd class="font-extrabold">K</kbd> para abrir la paleta de comandos.
+  <div class="hidden md:block  mb-2 text-[10px] px-6 z-10">
+   <p class=" text-white"> 
+    Pulsa <kbd class="kbd text-base-content">Cmd</kbd> + <kbd class="kbd text-base-content">K</kbd> para abrir la paleta de comandos.
    </p>
   </div>
 
@@ -63,7 +64,7 @@ const pagesInfo = pages.map(( page ) => {
 <script>
 
   import "ninja-keys";
-import { social_icons } from "./IconKeyboard";
+import { social_icons } from "../data/IconKeyboard.ts";
   const ninja = document.querySelector("ninja-keys");
 
   const btnOpen = document.querySelector("#btn-open");

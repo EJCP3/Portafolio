@@ -1,11 +1,12 @@
 ---
-// Supports weights 200-900
 import "@fontsource-variable/inconsolata";
-import { basics } from "@cv";
+import { basics } from "@cv"; 
 ---
 
+
+
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -19,25 +20,18 @@ import { basics } from "@cv";
     <title>{basics.label}</title>
   </head>
   <body
-    class="w-full h-screen flex flex-col md:flex-row md:justify-between items-center justify-center bg-cover bg-"
+    class="w-full h-dvh flex flex-col md:flex-row md:justify-between items-center justify-center bg-cover bg-"
   >
-
     <slot />
   </body>
 </html>
 
-<script>
-
-
-
-</script>
-
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+
 <style>
   body {
     background-image: url("/movil/BM2.jpg");
     font-family: "Inconsolata Variable", monospace;
-   
   }
 
   @media (min-width: 768px) {
@@ -45,4 +39,6 @@ import { basics } from "@cv";
       background-image: url("/desktop/BP2.svg");
     }
   }
-</style>
+
+ 
+</style> 

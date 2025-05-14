@@ -1,36 +1,32 @@
 ---
-import Modal from "../main/Modal.astro";
+import Modal from "../shared/Modal.astro";
 import IconSkill from "../../icons/IconSkill.astro";
 import CardSkill from "./CardSkill.astro";
-import { TAGS } from "../main/Tags";
-import { undefined } from "astro:schema";
+import { TAGS } from "../data/Tags";
+import Modal1 from "../shared/Modal1.astro";
 
 const tagsArray = Object.entries(TAGS);
 
 
-let name = false 
-
-if (typeof window !== "undefined") {
-  const pixel = window.innerWidth;
-  pixel > 768 ? name = true : name = false  
-}
 
 
 ---
 
-<Modal name="Tecnología" background="/spotify.svg" size="w-17 h-20 md:w-10 md-10" width="w-full mx-auto mt-2 max-w-[900px] " tamaño="md:text-text-lg"  margin="md:pb-4">
+<Modal1 idName="Tecnología" name="Tecnología" background="/spotify.svg" size="w-17  md:w-11"   width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
+ tamaño="md:text-text-lg"  margin="">
   <Fragment slot="icon"><IconSkill /></Fragment>
   <article class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  place-items-center  gap-y-4  place-self-center ">
    
     {
       tagsArray.map(([key, tag]) => {
+      
         return (
-          <CardSkill title={tag.name} icon={tag.img} bgColor={tag.class} />
+          <CardSkill title={tag.name} icon={tag.img} bgColor={tag.class}  />
         );
       })
     }
   </article>
-</Modal>
+</Modal1>
 
 <script>
 

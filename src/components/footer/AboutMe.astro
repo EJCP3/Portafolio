@@ -1,44 +1,45 @@
 ---
-import Modal from "../main/Modal.astro";
+import Modal from "../shared/Modal.astro";
 import IconAbout from "../../icons/IconAbout.astro";
 import { basics } from "@cv";
+// import Modal from "../shared/Modal.astro";
+import Modal1 from "../shared/Modal1.astro";
 ---
 
-<Modal
+<Modal1
+  idName="Mi"
   name="Mi"
   background="/Contacts.svg"
-  size="w-20 h-20 md:w-12 "
-  margin="md:pb-4"
-  width="mx-auto h-[520px] "
-  tamaño="md:text-text-lg"
+  size="w-20  md:w-12 "
 >
   <Fragment slot="icon"><IconAbout /></Fragment>
 
-  <article
-    class="flex flex-col items-center justify-center gap-y-4 relative dark:bg-gray-900 p-6 rounded-2xl max-w-sm mx-auto"
-  >
-    <h1 class="text-3xl font-bold mb-2">Hey, soy {basics.name}</h1>
-    <p class="text-left text-lg text-gray-500 font-light leading-relaxed">{basics.titular}</p>
-    <p
-      class="text-left font-light text-sm leading-relaxed text-gray-700 dark:text-gray-300"
-    >
-      {basics.resumen}
-    </p>
-  </article>
+ <article class="card   p-6 rounded-2xl max-w-sm mx-auto items-center gap-y-4">
+  <h1 class="text-3xl font-bold mb-2 text-center  text-base-content">Hey, soy {basics.name}</h1>
 
-  <a
-    onclick="window.dispatchEvent(new CustomEvent('modal:open', { detail: 'tecnología' }))"
-    id="btnModal"
-    class="mt-4 inline-flex items-center justify-center px-5 py-2 text-white font-medium rounded-xl z-10 relative bg-blue-500 transition delay-150 duration-700 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500"
-  >
-    Tecnologia
-    <span class="relative flex size-3">
-      <span
-        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-800 opacity-75"
-      ></span>
-      <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
-    </span>
-  </a>
-</Modal>
+  <p class="text-left text-lg text-base-content/70 font-light leading-relaxed">
+    {basics.titular}
+  </p>
+
+  <p class="text-left text-sm font-light leading-relaxed text-base-content">
+    {basics.resumen}
+  </p>
+</article>
+
+<a
+  onclick="window.dispatchEvent(new CustomEvent('modal:open', { detail: 'Tecnología' }))"
+  id="btnModal"
+  class="btn max-w-auto mt-4 btn-primary gap-2 relative z-10 transition hover:-translate-y-1 hover:scale-105 mx-auto"
+>
+  Tecnología
+  <span class="relative flex size-3">
+  <span
+    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-info opacity-75"
+  ></span>
+  <span class="relative inline-flex size-3 rounded-full bg-error"></span>
+</span>
+
+</a>
+</Modal1>
 
 <script></script>

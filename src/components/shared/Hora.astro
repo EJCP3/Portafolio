@@ -1,0 +1,35 @@
+---
+const { hours, minute } = Astro.props;
+---
+
+<p id="hora" class="text-xl font-bold text-right z-10">
+  <span data-hours={hours} id={`hours${hours}`} class="hours"></span>:<span
+    id=`minute${minute}`
+    data-minute={minute}
+    class="minute"></span>
+</p>
+
+<script>
+  const horas = document.querySelectorAll("[data-hours]");
+  const minutos = document.querySelectorAll("[data-minute]");
+
+
+  function updateClock() {
+    const now = new Date();
+    const hour = String(now.getHours()).padStart(2, "0");
+    const minute = String(now.getMinutes()).padStart(2, "0");
+    horas.forEach((clock) => {
+      if (hour) {
+        document.getElementById(clock.id).textContent = hour;
+      }
+    });
+    minutos.forEach((clock) => {
+      if (minute) {
+        document.getElementById(clock.id).textContent = minute;
+      }
+    });
+  }
+
+  updateClock(); // Inicial
+  setInterval(updateClock, 60000); // Cada minuto
+</script>

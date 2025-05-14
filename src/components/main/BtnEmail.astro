@@ -1,24 +1,27 @@
 ---
 
 ---
+
 <div class="flex flex-col justify-center items-center md:w-15 md:h-10">
-<a  class="text-base text-white font-normal  text-center" id="copy">
-  <img class="w-20 h-20 md:w-15 md:h-10" src="/Email.svg" alt="euddycabrera03@gmail.com" />
-  Email
-  <p class="hidden" id="copy1">euddycabrera03@gmail.com</p>
-</a>
+  <a class="text-base text-white font-normal text-center" id="copy">
+    <img
+      class="w-20 h-20 md:w-15 md:h-10"
+      src="/Email.svg"
+      alt="euddycabrera03@gmail.com"
+    />
+    Email
+    <p class="hidden" id="copy1">euddycabrera03@gmail.com</p>
+  </a>
 </div>
 <script>
-import { Notyf } from 'notyf';
-const notyf = new Notyf({
-  duration: 2000,
-  position: {
-    x: 'center',
-    y: 'top',
-  },
-});
-
-// notyf.success('Please fill out the form');
+  import { Notyf } from "notyf";
+  const notyf = new Notyf({
+    duration: 2000,
+    position: {
+      x: "center",
+      y: "top",
+    },
+  });
 
 
   const btnEmail = document.getElementById("copy");
@@ -30,7 +33,7 @@ const notyf = new Notyf({
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        notyf.success("Email copiado al portapapeles"  );
+        notyf.success("Email copiado al portapapeles");
       })
       .catch((err) => {
         console.error("Error al copiar el texto: ", err);

@@ -1,21 +1,25 @@
 ---
 import AboutMe from "./footer/AboutMe.astro";
-import Hora from "./footer/Hora.astro";
+import Clima from "./footer/Clima.astro";
+import DigitalHora from "./footer/DigitalHora.astro";
+
 import Skill from "./footer/Skill.astro";
+
+
+
+
 ---
 
 <footer
-  class="md:bg-gradient-to-r md:from-black/40 md:via-black/20 md:to-black/40 md:backdrop-blur-lg md:w-full h-24 flex justify-center text-center gap-4 mt-20 md:self-end md:absolute z-10 text-white md:justify-around md:items-center"
+  class="md:bg-gradient-to-r md:from-black/40 md:via-black/20 md:to-black/40 md:backdrop-blur-lg md:w-full h-28 flex justify-center text-center gap-4 mt-20 md:self-end md:absolute z-10 text-white md:justify-around md:items-center"
 >
-  <div class="hidden md:block">
-    <p id="clima" class="text-sm font-bold"></p>
-  </div>
-  <div class="flex gap-x-6">
+    <Clima />
+  <div class="flex flex-row flex-wrap gap-x-6 justify-baseline items-baseline mt-3">
     <AboutMe />
     <Skill />
   </div>
   <div class="hidden md:flex md:gap-x-6 md:items-center justify-center">
-      <Hora/>
+      <DigitalHora/>
   </div>
 </footer>
 

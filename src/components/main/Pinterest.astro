@@ -23,7 +23,7 @@
   });
 
   const btnCambiarFondo = document.getElementById("bg");
-  window.bg = btnCambiarFondo; // Aquí se crea la referencia global
+  window.bg = btnCambiarFondo;
 
   btnCambiarFondo?.addEventListener("click", (e) => {
     const randomNumber = Math.floor(Math.random() * 1001);
@@ -42,18 +42,18 @@
     });
 
     nuevaImagen.onload = () => {
-      notyf.dismissAll();
+       notyf.dismissAll();
       body.style.backgroundImage = `url(${url})`;
-      notyf.success("Nuevo fondo agregado correctamente");
+       notyf.success("Nuevo fondo agregado correctamente");
     };
 
     nuevaImagen.onerror = () => {
       const intentoImagen = new Image();
       intentoImagen.src = url;
       intentoImagen.onload = () => {
-        notyf.dismissAll();
+         notyf.dismissAll();
         body.style.backgroundImage = `url(${url})`;
-        notyf.success("Nuevo fondo agregado tras reintento");
+         notyf.success("Nuevo fondo agregado tras reintento");
       };
       intentoImagen.onerror = () => {
         body.style.backgroundImage = viejaImg;

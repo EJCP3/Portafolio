@@ -1,55 +1,29 @@
-<div class=" text-center">
-  <p class="text-sm">
+---
+import Hora from "../shared/Hora.astro";
+---
+
+<div class="text-center text-white z-10">
+  <p class="text-sm   ">
     <span class="mouthClock"></span>
     <span class="dayClock"></span>
   </p>
-  <p class="text-4xl font-bold mb-4">
-    <span class="hoursClock"></span>:<span class="minuteClock"></span>
-  </p>
- 
+  <Hora hours="clock" minute="clock"/>
 </div>
 
 <script>
-    const timeToday = new Date();
-    const day = String(timeToday.getDate());
-    const hour = String(timeToday.getHours());
-    const minute = String(timeToday.getMinutes());
-    const year = String(timeToday.getFullYear());
-    const mouth = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ][timeToday.getMonth()];
-
  
-    const classMouth = document.querySelector(".mouthClock");
-    const classHour = document.querySelector(".hoursClock");
-    const classMinute = document.querySelector(".minuteClock");
-    const classDay = document.querySelector(".dayClock");
-    
+    const now = new Date();
+    const mouth = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ][now.getMonth()];
 
-    if (
-      classMouth &&
-      classDay &&
-      classHour &&
-      classMinute 
-    )
-     {
-      classMouth.innerHTML = mouth;
-      classHour.innerHTML = hour;
-      classMinute.innerHTML = minute;
-      classDay.innerHTML = day;
+    const day = String(now.getDate()).padStart(2, '0');
 
+    if(day  && mouth) {
+    document.querySelector(".mouthClock").textContent = mouth;
+    document.querySelector(".dayClock").textContent = day;
     }
-
+ 
 </script>
-  
+
