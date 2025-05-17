@@ -1,46 +1,8 @@
 ---
 import Pokedex from "~/icons/pokedex.astro";
 import Modal1 from "../shared/Modal1.astro";
-
-const themes = [
-  "light",
-  "dark",
-  "cupcake",
-  "bumblebee",
-  "emerald",
-  "corporate",
-  "synthwave",
-  "retro",
-  "cyberpunk",
-  "valentine",
-  "halloween",
-  "garden",
-  "forest",
-  "aqua",
-  "lofi",
-  "pastel",
-  "fantasy",
-  "wifeframe",
-  "black",
-  "luxury",
-  "dracula",
-  "cmyk",
-  "autumn",
-  "business",
-  "acid",
-  "lemonade",
-  "night",
-  "coffee",
-  "winter",
-  "dim",
-  "nord",
-  "sunset",
-  "caramellatte",
-  "abyss",
-  "silk",
-];
-
-const pokemon = {};
+import Theme from "./Theme.astro";
+import { themes } from "../data/Themes";
 ---
 
 <Modal1
@@ -48,13 +10,12 @@ const pokemon = {};
   idName="Pokedex"
   background="/pokedex.png"
   size="w-16 h-16 md:w-14 md:h-12"
-  width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
+  width="w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl bg-white"
 >
   <Fragment slot="icon"><Pokedex /></Fragment>
 
   <div
-    id="background"
-    class="absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
+    class="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"
   >
   </div>
 
@@ -129,58 +90,58 @@ const pokemon = {};
       </aside>
     </div>
   </header>
-  <!-- <article
-    data-theme="pastel"
-    class="w-30 border-base-content/20 hover:border-base-content/40 overflow-hidden rounded-lg border outline-2 outline-offset-2 outline-transparent">
-    <div class="bg-base-100 text-base-content w-full cursor-pointer">
-      <div class="grid grid-cols-5 grid-rows-3">
-        <aside class="bg-base-200 col-start-1 row-span-2 row-start-1"></aside>
-        <aside class="bg-base-300 col-start-1 row-start-3"></aside>
-        <section
-          class="bg-base-100 col-span-4 col-start-2 row-span-3 row-start-1 flex flex-col gap-1 p-2"
-        >
-          <ul class="flex flex-wrap gap-1 text-base-content">
-            <li
-              class="bg-primary flex aspect-square w-5 items-center justify-center rounded lg:w-6"
-            >
-              A
-            </li>
-            <li
-              class="bg-secondary flex aspect-square w-5 items-center justify-center rounded lg:w-6"
-            >
-              A
-            </li>
 
-            <li
-              class="bg-accent flex aspect-square w-5 items-center justify-center rounded lg:w-6"
-            >
-              A
-            </li>
-            <li
-              class="bg-neutral flex aspect-square w-5 items-center justify-center rounded lg:w-6"
-            >
-              A
-            </li>
-          </ul>
-        </section>
+<section class="flex justify-center items-center mt-10">  
+
+   <section
+    id="scroll-content"
+    data-theme="dark"
+    class="tabla w-full bg-white border-2 border-neutral h-70 mx-auto max-w-lg  rounded-sm overflow-hidden"
+  >
+    <ul class="w-100 h-70 text-sm leading-none text-black" id="theme-list">
+      {themes.map((theme, index) => <Theme name={theme} number={index} />)}
+    </ul>
+
+   
+  </section>
+  <div class="relative flex w-30 h-70 justify-center items-center">
+    <div class="w-2 h-full bg-gray-100 relative border-2 border-black">
+      <div
+        class="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[20px] border-b-gray-400 absolute  left-1/2 -translate-x-1/2 z-10 outline-b-black outline-r-2 outline-offset-b-0 "
+      >
+      </div>
+      <div
+        id="thumb"
+        class="w-8 bg-[linear-gradient(2deg,rgba(9,9,121,1)_0%,rgba(88,112,248,1)_12%)] h-15 absolute top-0 cursor-pointer rounded border-2 border-white left-1/2 -translate-x-1/2  ring outline-black outline-2 outline-offset-0 shadow-xl shadow-black-500/50"
+      >
       </div>
     </div>
-  </article> -->
-  <section
-     data-theme="dark" class="static  bg-white border-2 border-neutral w-[] h-70 mx-auto max-w-lg mt-2 rounded-sm"
-  >
-  <aside class="  w-12 h-full bg-red-600 border-red-200 border-r-6"></aside>
-    <ul class=" list ">
-      <li class="list-row ">  
-         <div>
-          <img
-            class="size-10 rounded-box"
-            src="/pokeball.png"
-          />
-        </div>
-        <p class="text-xl   font-extralight ">001</p>
-          <p class="text-xl font-extralight ">Light</p>
-      </li>
-    </ul>
-  </section>
+    <div
+      class="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[20px] border-t-black absolute left-1/2 -translate-x-1/2 bottom-1"
+    >
+    </div>
+  </div>
+ </section>
+
+
+
 </Modal1>
+
+  <script>
+    import "./Scrollbar.js";
+    const activeTheme = document.documentElement.getAttribute("data-theme");
+    const items = document.querySelectorAll("#theme-list li");
+
+    items.forEach((li) => {
+      const aside = li.querySelector("[data-img-container]");
+      if (li.dataset.name === activeTheme) {
+        // Ya tienes el <li> activo directamente
+        li.classList.add("border-4", "rounded-r-sm", "border-red-600");
+        console.log("Tema activo encontrado:", li.dataset.name);
+
+        aside.innerHTML = `
+          <img class="size-10 rounded-box" src="/pokeball.png" />
+        `;
+      }
+    });
+  </script>
