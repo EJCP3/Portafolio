@@ -1,9 +1,8 @@
 ---
-import Modal from "../shared/Modal.astro";
 import IconSkill from "../../icons/IconSkill.astro";
 import CardSkill from "./CardSkill.astro";
 import { TAGS } from "../data/Tags";
-import Modal1 from "../shared/Modal1.astro";
+import Modal from "../shared/Modal.astro";
 
 const tagsArray = Object.entries(TAGS);
 
@@ -12,7 +11,7 @@ const tagsArray = Object.entries(TAGS);
 
 ---
 
-<Modal1 idName="Tecnología" name="Tecnología" background="/spotify.svg" size="w-17  md:w-11"   width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
+<Modal idName="Tecnología" name="Tecnología" background="/spotify.svg" size="w-17  md:w-11"   width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
  tamaño="md:text-text-lg"  margin="">
   <Fragment slot="icon"><IconSkill /></Fragment>
   <article class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  place-items-center  gap-y-4  place-self-center ">
@@ -26,7 +25,7 @@ const tagsArray = Object.entries(TAGS);
       })
     }
   </article>
-</Modal1>
+</Modal>
 
 <script>
 

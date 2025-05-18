@@ -9,9 +9,8 @@ import SwitchTheme from "./main/SwitchTheme.astro";
 ---
 
 <main
-  class="max-w-105  flex flex-wrap gap-x-3 mt-4 px-4 justify-baseline items-baseline md:order-first md:flex-col md:mt-0 md:justify-normal md:gap-y-8 md:items-center md:h-10/12"
+  class="max-w-105 flex flex-wrap gap-x-3 mt-4 px-4 justify-baseline items-baseline md:order-first md:flex-col md:mt-0 md:justify-normal md:gap-y-8 md:items-center md:h-10/12"
 >
-  
   <Projects />
   <Cv />
   <LinkSocial href="https://github.com/EJCP3" img="/Github.svg" name="GitHub" />
@@ -25,38 +24,28 @@ import SwitchTheme from "./main/SwitchTheme.astro";
   <BtnEmail />
 
   <Backgrounds />
-  <SwitchTheme/>
+  <SwitchTheme />
   <Pinterest />
 </main>
 
 <script type="module">
-  function openModal(id) {
-    document
-      .querySelectorAll(`[data-modal-id="${id}"] dialog[open]`)
-      .forEach((dialog) => {
-        dialog.close();
-      });
+  
 
-    const target = document.querySelector(`[data-modal-id="${id}"] dialog`);
-    target?.showModal();
-  }
+  window.addEventListener("open", (e) => {
+    const modal = document?.querySelector(
+      `[data-modal-id="${e.detail.toLowerCase()}" ] `
+    );
 
-  document.querySelectorAll(".modal-wrapper").forEach((wrapper) => {
-    const modal = wrapper.querySelector("dialog");
-    const openBtn = wrapper.querySelector(".modal-btn");
-    const closeBtn = wrapper.querySelector(".modal-close");
+    document.querySelectorAll(`dialog[open]`).forEach((dialog) => {
+      dialog.close();
+    });
 
-    openBtn?.addEventListener("click", () => modal?.showModal());
-    closeBtn?.addEventListener("click", () => modal?.close());
-    // modal?.addEventListener("click", (e) => {
-    //   if (e.target === modal) {
-    //     modal?.close();
-    //   }
-    // });
+    if (modal) {
+      modal.showModal();
+    } else {
+    }
   });
-
-  window.addEventListener("modal:open", (e) => {
-    console.log(`Opening modal with ID: ${e.detail}`);
-    openModal(e.detail);
+  window.addEventListener("close", (e) => {
+    console.log(e.detail);
   });
 </script>

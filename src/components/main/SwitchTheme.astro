@@ -1,16 +1,17 @@
 ---
 import Pokedex from "~/icons/pokedex.astro";
-import Modal1 from "../shared/Modal1.astro";
+import Modal from "../shared/Modal.astro";
 import Theme from "./Theme.astro";
 import { themes } from "../data/Themes";
 ---
 
-<Modal1
+<Modal
   name="Pokedex"
   idName="Pokedex"
   background="/pokedex.png"
   size="w-16 h-16 md:w-14 md:h-12"
-  width="w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl bg-white"
+  width="w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl bg-white "
+  color="text-black fill-black"
 >
   <Fragment slot="icon"><Pokedex /></Fragment>
 
@@ -20,7 +21,6 @@ import { themes } from "../data/Themes";
   </div>
 
   <header
-    data-theme="valentine"
     class="border-1 border-neutral w-55 text-center mx-auto rounded-sm bg-base-100"
   >
     <div class="border-b-4 border-error flex gap-x-2 text-base items-center">
@@ -91,57 +91,77 @@ import { themes } from "../data/Themes";
     </div>
   </header>
 
-<section class="flex justify-center items-center mt-10">  
-
-   <section
-    id="scroll-content"
-    data-theme="dark"
-    class="tabla w-full bg-white border-2 border-neutral h-70 mx-auto max-w-lg  rounded-sm overflow-hidden"
-  >
-    <ul class="w-100 h-70 text-sm leading-none text-black" id="theme-list">
-      {themes.map((theme, index) => <Theme name={theme} number={index} />)}
-    </ul>
-
-   
-  </section>
-  <div class="relative flex w-30 h-70 justify-center items-center">
-    <div class="w-2 h-full bg-gray-100 relative border-2 border-black">
-      <div
-        class="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-b-[20px] border-b-gray-400 absolute  left-1/2 -translate-x-1/2 z-10 outline-b-black outline-r-2 outline-offset-b-0 "
-      >
-      </div>
-      <div
-        id="thumb"
-        class="w-8 bg-[linear-gradient(2deg,rgba(9,9,121,1)_0%,rgba(88,112,248,1)_12%)] h-15 absolute top-0 cursor-pointer rounded border-2 border-white left-1/2 -translate-x-1/2  ring outline-black outline-2 outline-offset-0 shadow-xl shadow-black-500/50"
-      >
-      </div>
-    </div>
-    <div
-      class="w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent border-t-[20px] border-t-black absolute left-1/2 -translate-x-1/2 bottom-1"
+  <section class="flex justify-center items-center mt-10">
+    <section
+      id="scroll-content"
+      data-theme="dark"
+      class="tabla w-full bg-white border-2 border-neutral h-70 mx-auto max-w-lg rounded-sm overflow-hidden"
     >
+      <ul class="w-100 h-70 text-sm leading-none text-black" id="theme-list">
+        {themes.map((theme, index) => <Theme name={theme} number={index} />)}
+      </ul>
+    </section>
+    <div class="relative flex w-30 h-70 justify-center items-center">
+      <img
+        class="absolute size-14 -bottom-9 left-1/2 -translate-x-1/2 z-10"
+        src="/down.svg"
+        alt=""
+      />
+
+      <img
+        class="absolute size-14 -top-9 left-1/2 -translate-x-1/2 z-10"
+        src="/up.svg"
+        alt=""
+      />
+      <div
+        class="w-2 h-full bg-gray-100 relative border-l-2 border-r-2 border-black shadow-xl shadow-black-500/50"
+      >
+        <div
+          id="thumb"
+          class="w-8 bg-[linear-gradient(2deg,rgba(9,9,121,1)_0%,rgba(88,112,248,1)_12%)] h-15 absolute top-0 cursor-pointer rounded border-2 border-white left-1/2 -translate-x-1/2 ring outline-black outline-2 outline-offset-0 shadow-xl shadow-black-500/50"
+        >
+        </div>
+      </div>
     </div>
-  </div>
- </section>
+  </section>
+</Modal>
+
+<script>
+  import "./Scrollbar.js";
+  const items = document.querySelectorAll("#theme-list li");
+  const activeTheme = localStorage.getItem("theme");
 
 
+ items.forEach((li) => {
+  const themeName = li.dataset.name;
+  const aside = li.querySelector("[data-img-container]");
 
-</Modal1>
+  const isInitiallyActive = themeName === activeTheme;
 
-  <script>
-    import "./Scrollbar.js";
-    const activeTheme = document.documentElement.getAttribute("data-theme");
-    const items = document.querySelectorAll("#theme-list li");
+  if (isInitiallyActive) {
+    li.classList.add("border-4", "rounded-r-sm", "border-red-600");
+    aside.innerHTML = `<img class="size-10 rounded-box" src="/pokeball.png" />`;
+  }
 
-    items.forEach((li) => {
-      const aside = li.querySelector("[data-img-container]");
-      if (li.dataset.name === activeTheme) {
-        // Ya tienes el <li> activo directamente
-        li.classList.add("border-4", "rounded-r-sm", "border-red-600");
-        console.log("Tema activo encontrado:", li.dataset.name);
+  li.addEventListener("click", () => {
+    localStorage.setItem("theme", themeName);
+    document.body.setAttribute("data-theme", themeName);
 
-        aside.innerHTML = `
-          <img class="size-10 rounded-box" src="/pokeball.png" />
-        `;
-      }
+    items.forEach((otherLi) => {
+      const otherAside = otherLi.querySelector("[data-img-container]");
+      const otherName = otherLi.dataset.name;
+      const isActive = otherName === themeName;
+
+      otherLi.classList.toggle("border-4", isActive);
+      otherLi.classList.toggle("rounded-r-sm", isActive);
+      otherLi.classList.toggle("border-red-600", isActive);
+
+      otherAside.innerHTML = isActive
+        ? `<img class="size-10 rounded-box" src="/pokeball.png" />`
+        : `<div class="w-6 h-6 bg-white rounded-full"></div>`;
     });
-  </script>
+
+  });
+});
+
+</script>

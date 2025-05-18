@@ -1,11 +1,10 @@
 ---
-import Modal from "../shared/Modal.astro";
 import Background from "~/icons/background.astro";
 import { fondo } from "@cv";
-import Modal1 from "../shared/Modal1.astro";
+import Modal from "../shared/Modal.astro";
 ---
 
-<Modal1
+<Modal
   idName="Fondos"
   name="Fondos"
   background="/Fondo.svg"
@@ -45,11 +44,13 @@ import Modal1 from "../shared/Modal1.astro";
         </div>
       ))
     }
+    <button id="notBg" class="btn btn-outline btn-success mx-3">Fondo por defecto</button>
   </figure>
-</Modal1>
+</Modal>
 
 <script>
   const conteBG = document.querySelectorAll(".bg img");
+  const notBg = document.getElementById("notBg");
 
 
   conteBG.forEach((item) => {
@@ -59,5 +60,10 @@ import Modal1 from "../shared/Modal1.astro";
 
     
     });
+  });
+
+  notBg.addEventListener("click", () => {
+    const body = document.body;
+    body.style.backgroundImage = "none";
   });
 </script>

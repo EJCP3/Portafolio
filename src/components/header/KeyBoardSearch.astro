@@ -4,13 +4,12 @@ import { social_icons } from "../data/IconKeyboard.ts";
 
 const { profiles } = basics;
 
-const pages = ["mi", "proyectos", "tecnología", "fondos"];
-
-
+const pages = ["Mi", "Proyectos", "Tecnología", "Fondos", "Pokedex"];
+const pagesTecla = ["M", "P", "T", "B", "X"];
 
 const profileInfo = profiles.map(({ network, url }) => {
   const fistLetter = network[0].toUpperCase();
-  const icon = social_icons[network]
+  const icon = social_icons[network];
 
   return {
     id: network,
@@ -22,53 +21,52 @@ const profileInfo = profiles.map(({ network, url }) => {
   };
 });
 
-const pagesInfo = pages.map(( page ) => {
+const pagesInfo = pages.map((page, index) => {
+  const nameIcon = page.toLowerCase();
+  const icon = social_icons[nameIcon];
 
-  const icon = social_icons[page]
-
-  const fistLetter = page[0].toUpperCase();
   const pageTitulo = page.replace("_", " ");
-
 
   return {
     id: pageTitulo,
     title: `Abrir ${pageTitulo}`,
-    hotkey: `ctrl+${fistLetter}`,
+    hotkey: `ctrl+${pagesTecla[index]}`,
     section: "Paginas",
-    icon
+    icon,
   };
 });
-
 ---
 
-<section  />
-  <picture id="btn-open" class="md:hidden">
-    <img class="w-auto h-auto" src="/Setting.svg" alt="setting" />
-  </picture>
+<section></section>
 
-  <div class="hidden md:block  mb-2 text-[10px] px-6 z-10">
-   <p class=" text-white"> 
-    Pulsa <kbd class="kbd text-base-content">Cmd</kbd> + <kbd class="kbd text-base-content">K</kbd> para abrir la paleta de comandos.
-   </p>
-  </div>
+<picture id="btn-open" class="md:hidden z-1 cursor-pointer">
+  <img class="w-auto h-auto" src="/Setting.svg" alt="setting" />
+</picture>
 
-  <ninja-keys
-    data-info={JSON.stringify(profileInfo)}
-    data-pages={JSON.stringify(pagesInfo)}
-    placeholder="Buscar comando"
-    hideBreadcrumbs
-  >
-  </ninja-keys>
-</section>
+<div class="hidden md:block mb-2 text-[10px] px-6 z-1">
+  <p class="text-base-content">
+    Pulsa <kbd class="kbd text-base-content">Cmd</kbd> + <kbd
+      class="kbd text-base-content">K</kbd
+    > para abrir la paleta de comandos.
+  </p>
+</div>
+
+<ninja-keys class="z-10"
+  data-info={JSON.stringify(profileInfo)}
+  data-pages={JSON.stringify(pagesInfo)}
+  placeholder="Buscar comando"
+  hideBreadcrumbs
+>
+</ninja-keys>
 
 <script>
-
   import "ninja-keys";
-import { social_icons } from "../data/IconKeyboard.ts";
+  import { social_icons } from "../data/IconKeyboard.ts";
+  import { themes } from "../data/Themes";
   const ninja = document.querySelector("ninja-keys");
 
   const btnOpen = document.querySelector("#btn-open");
-  
+
   btnOpen?.addEventListener("click", () => {
     var event = new KeyboardEvent("keydown", {
       key: "K",
@@ -80,7 +78,6 @@ import { social_icons } from "../data/IconKeyboard.ts";
       shiftKey: false,
       metaKey: false,
     });
-
     document.dispatchEvent(event);
   });
 
@@ -88,10 +85,8 @@ import { social_icons } from "../data/IconKeyboard.ts";
     const info = ninja.getAttribute("data-info") ?? "[]";
     const pages = ninja.getAttribute("data-pages") ?? "[]";
 
-
     const dataInfo = JSON.parse(info);
     const datapages = JSON.parse(pages);
-
 
     const data = dataInfo.map((item: any) => {
       return {
@@ -102,11 +97,11 @@ import { social_icons } from "../data/IconKeyboard.ts";
       };
     });
     const dataPage = datapages.map((item: any) => {
-     
       return {
         ...item,
         handler: () => {
-          window.dispatchEvent(new CustomEvent("modal:open", { detail: item.id }));
+          window.dispatchEvent(new CustomEvent("open", { detail: item.id }));
+          ninja.close();
         },
       };
     });
@@ -115,22 +110,52 @@ import { social_icons } from "../data/IconKeyboard.ts";
       {
         id: "CV",
         title: "Descargar Resumen",
-        hotkey: "ctrl+r",
+        hotkey: "ctrl+R",
         icon: social_icons.pdf,
         section: "Acciones",
         handler: () => {
           window.open("/CV.pdf", "_blank");
         },
-
       },
       {
         id: "Background",
-        title: "Cambiar de fondo",
-        hotkey: "ctrl+a",
+        title: "Cambiar de Fondo",
+        hotkey: "ctrl+F",
         icon: social_icons.switch,
         section: "Acciones",
         handler: () => {
-         window.bg.click();
+          window.bg.click();
+        },
+      },
+      {
+        id: "Theme",
+        title: "Cambiar de Tema",
+        hotkey: "ctrl+C",
+        icon: social_icons.palette,
+        section: "Acciones",
+        handler: () => {
+          const randomNumber = Math.floor(Math.random() * 34);
+          document.body.setAttribute("data-theme", themes[randomNumber]);
+          localStorage.setItem("theme", themes[randomNumber]);
+          const activeTheme = localStorage.getItem("theme");
+
+          document.querySelectorAll("[data-name]").forEach((el) => {
+            el.classList.remove("border-4", "rounded-r-sm", "border-red-600");
+            const aside = el.querySelector("[data-img-container]");
+            if (aside) {
+              aside.innerHTML = `<div class="w-6 h-6 bg-white rounded-full"></div>`;
+            }
+          });
+
+          // Aplica al nuevo ítem
+          const item = document.querySelector(`[data-name="${activeTheme}"]`);
+          if (!item) return;
+
+          const aside = item.querySelector("[data-img-container]");
+          if (!aside) return;
+
+          item.classList.add("border-4", "rounded-r-sm", "border-red-600");
+          aside.innerHTML = `<img class="size-10 rounded-box" src="/pokeball.png" />`;
         },
       },
       ...dataPage,

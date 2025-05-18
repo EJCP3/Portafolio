@@ -2,28 +2,35 @@
 import Hora from "../shared/Hora.astro";
 ---
 
-<div class="text-center text-white z-10">
-  <p class="text-sm   ">
-    <span class="mouthClock"></span>
-    <span class="dayClock"></span>
+<div class="text-center z-1">
+  <p class="text-sm ">
+    <span class="mouthClock "></span>
+    <span class="dayClock "></span>
   </p>
-  <Hora hours="clock" minute="clock"/>
+  <Hora hours="clock" minute="clock" />
 </div>
 
 <script>
- 
-    const now = new Date();
-    const mouth = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ][now.getMonth()];
+  const now = new Date();
+  const mouth = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ][now.getMonth()];
 
-    const day = String(now.getDate()).padStart(2, '0');
+  const day = String(now.getDate()).padStart(2, "0");
 
-    if(day  && mouth) {
+  if (day && mouth) {
     document.querySelector(".mouthClock").textContent = mouth;
     document.querySelector(".dayClock").textContent = day;
-    }
- 
+  }
 </script>
-

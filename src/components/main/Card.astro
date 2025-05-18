@@ -10,75 +10,12 @@ import Link from "~/icons/Link.astro";
 const tagsArray = Object.entries(TAGS);
 ---
 
-<!-- <ul class="px-4 flex justify-center items-center flex-col">
-  {
-    projects.map((project: any) => (
-      <li class="w-full flex flex-col md:flex-row items-center md:items-start gap-6 mt-4 max-w-screen-lg mx-auto">
-      
-        <img
-          loading="lazy"
-          src={project.img}
-          alt={project.name}
-          class="w-full md:w-1/2 h-60 object-cover rounded-md "
-        />
 
-      
-        <div class="w-full md:w-1/2 flex flex-col gap-2">
-          <h3 class="text-xl font-medium">{project.name}</h3>
-
-          <div class="flex flex-wrap gap-2">
-            {
-              project.technologies.map((skillName: string) => {
-                const tagEntry = tagsArray.find(
-                  ([key, tag]) => tag.name.toLowerCase() === skillName.toLowerCase()
-                );
-
-                if (tagEntry) {
-                  const [_, tagData] = tagEntry;
-                  return (
-                    <Bagde key={tagData.name} class={tagData.class}>
-                      <span class="flex flex-row gap-1 items-center">
-                        <tagData.icon class="w-3 h-3" />
-                        {tagData.name}
-                      </span>
-                    </Bagde>
-                  );
-                }
-
-                return null;
-              })
-            }
-          </div>
-
-          <p class="text-sm font-light">{project.description}</p>
-
-          <footer class="flex mt-2 gap-4">
-            {project.github && (
-              <BtnUrl href={project.github}>
-                <CodeGithub class="w-5 h-5" />
-                Code
-              </BtnUrl>
-            )}
-            {project.demo && (
-              <BtnUrl href={project.demo}>
-                <Link class="w-5 h-5" />
-                Preview
-              </BtnUrl>
-            )}
-          </footer>
-        </div>
-
-      </li>
-    ))
-  }
-</ul>
- -->
 <ul class="px-4 flex justify-center items-center flex-col rounded-none">
   {
     projects.map((project: any) => (
       <li class="card w-full md:card-side  bg-base-100 mt-4 max-w-screen-lg mx-auto rounded-none">
         
-        {/* Imagen del proyecto */}
         <figure class="w-full md:w-1/2">
           <img
             loading="lazy"
@@ -88,11 +25,9 @@ const tagsArray = Object.entries(TAGS);
           />
         </figure>
 
-        {/* Contenido del proyecto */}
         <div class="card-body w-full md:w-1/2">
           <h3 class="card-title text-xl">{project.name}</h3>
 
-          {/* Tecnologías */}
           <div class="flex flex-wrap gap-2">
             {
               project.technologies.map((skillName: string) => {
@@ -119,7 +54,6 @@ const tagsArray = Object.entries(TAGS);
 
           <p class="text-sm font-light">{project.description}</p>
 
-          {/* Botones */}
           <div class="card-actions mt-2">
             {project.github && (
               <BtnUrl href={project.github} class="btn btn-outline btn-sm">

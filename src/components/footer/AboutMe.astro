@@ -1,12 +1,10 @@
 ---
-import Modal from "../shared/Modal.astro";
 import IconAbout from "../../icons/IconAbout.astro";
 import { basics } from "@cv";
-// import Modal from "../shared/Modal.astro";
-import Modal1 from "../shared/Modal1.astro";
+import Modal from "../shared/Modal.astro";
 ---
 
-<Modal1
+<Modal
   idName="Mi"
   name="Mi"
   background="/Contacts.svg"
@@ -27,7 +25,7 @@ import Modal1 from "../shared/Modal1.astro";
 </article>
 
 <a
-  onclick="window.dispatchEvent(new CustomEvent('modal:open', { detail: 'Tecnología' }))"
+  onclick="window.dispatchEvent(new CustomEvent('open', { detail: 'Tecnología' }))"
   id="btnModal"
   class="btn max-w-auto mt-4 btn-primary gap-2 relative z-10 transition hover:-translate-y-1 hover:scale-105 mx-auto"
 >
@@ -40,6 +38,6 @@ import Modal1 from "../shared/Modal1.astro";
 </span>
 
 </a>
-</Modal1>
+</Modal>
 
 <script></script>
