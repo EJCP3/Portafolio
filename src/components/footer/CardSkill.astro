@@ -1,8 +1,9 @@
 ---
 import Code from "~/icons/Code.astro";
 
-const { title, icon, bgColor, iconSize } = Astro.props;
+const { title,  bgColor, img } = Astro.props;
 
+console.log(img)
 
 ---
 
@@ -18,13 +19,10 @@ const { title, icon, bgColor, iconSize } = Astro.props;
   <div
     class=`badge badge-soft w-full h-[150px] rounded-none flex items-center justify-center relative transition-transform duration-500 ease-in-out card-bottom ${bgColor}`
   >
-    <img
-      src={icon}
-      alt={title}
-      class={`card-icon w-20 transition-transform duration-500 ease-in-out  ${iconSize}`}
-      loading="lazy"
-      
-    />
+   
+    <svg class="w-22 h-22 card-icon transition-transform duration-500 ease-in-out">
+    <use xlink:href={img} />
+  </svg>
   </div>
 </div>
 

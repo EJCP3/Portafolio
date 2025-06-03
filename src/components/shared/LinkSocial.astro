@@ -4,9 +4,12 @@ const { href, img, name } = Astro.props;
 ---
 
 
-<div class="flex flex-col justify-center items-center md:w-13 md:h-10">
+<div class="flex flex-col justify-center items-center md:w-13 md:h-16">
 <a class="text-base text-white text-center font-normal" href={href}  role="link" target="_blank">
-  <img src={img} alt={name} class="w-20 h-20 md:w-15 md:h-10" />
+  <!-- <img src={img} alt={name} class="w-20 h-20 md:w-15 md:h-10" /> -->
+     <svg class="size-22 md:size-20">
+          <use xlink:href={img} />
+        </svg>
   <span class="text-base text-white mix-blend-difference outline-pink-500 mx-auto font-light">
     {name}
   </span>

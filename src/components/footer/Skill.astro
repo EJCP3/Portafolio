@@ -5,29 +5,27 @@ import { TAGS } from "../data/Tags";
 import Modal from "../shared/Modal.astro";
 
 const tagsArray = Object.entries(TAGS);
-
-
-
-
 ---
 
-<Modal idName="Tecnología" name="Tecnología" background="/spotify.svg" size="w-17  md:w-11"   width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
- tamaño="md:text-text-lg"  margin="">
+<Modal
+  idName="Tecnología"
+  name="Tecnología"
+  background="/sprite.svg#skill"
+  size="size-22 md:size-20"
+  width=" w-full h-full max-w-none md:w-4/5 md:h-11/12 md:max-w-3xl "
+  tamaño="md:text-text-lg"
+  margin="md:-mt-4"
+>
   <Fragment slot="icon"><IconSkill /></Fragment>
-  <article class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  place-items-center  gap-y-4  place-self-center ">
-   
+  <article
+    class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] place-items-center gap-y-4 place-self-center md:grid-cols-[repeat(3,minmax(200px,1fr))] md:ga-x-4"
+  >
     {
       tagsArray.map(([key, tag]) => {
-      
-        return (
-          <CardSkill title={tag.name} icon={tag.img} bgColor={tag.class}  />
-        );
+        return <CardSkill title={tag.name} img={tag.img} bgColor={tag.class} />;
       })
     }
   </article>
 </Modal>
 
-<script>
-
-
-</script>
+<script></script>

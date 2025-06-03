@@ -1,24 +1,24 @@
 ---
-// const restClima = await fetch(
-//   `http://api.weatherapi.com/v1/current.json?key=472e0e0dc0844e6b9c3234807250605&q=Santo%20Domingo&aqi=no`
-// );
+const restClima = await fetch(
+  `http://api.weatherapi.com/v1/current.json?key=472e0e0dc0844e6b9c3234807250605&q=Santo%20Domingo&aqi=no`
+);
 
-// const dataClima = await restClima.json();
+const dataClima = await restClima.json();
 
-// const {
-//   current: {
-//     temp_c,
-//     condition: { text, icon }
-//   }
-// } = dataClima;
+const {
+  current: {
+    temp_c,
+    condition: { text, icon }
+  }
+} = dataClima;
 
 // console.log(text, temp_c, icon);
 
-const weather = {
-  text: "Partly cloudy",
-  temp_c: 22,
-  icon: "https://cdn.weatherapi.com/weather/64x64/day/116.png"
-};
+// const weather = {
+//   text: "Partly cloudy",
+//   temp_c: 22,
+//   icon: "https://cdn.weatherapi.com/weather/64x64/day/116.png"
+// };
 
 
 ---
@@ -26,8 +26,8 @@ const weather = {
 <article class="hidden md:block">
     <img
 
-      src={weather.icon}
+      src={icon}
       alt="Icono del clima"
       class="w-8 h-8 rounded-full p-1 animate-bounce duration-1000"/>
-    <p class="text-sm font-bold">{weather.text} <span class="text-yellow-300 animate-pulse">{weather.temp_c}</span></p>
+    <p class="text-sm font-bold">{text} <span class="text-yellow-300 animate-pulse">{temp_c}</span></p>
 </article>

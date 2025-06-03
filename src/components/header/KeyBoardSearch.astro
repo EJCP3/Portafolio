@@ -37,10 +37,11 @@ const pagesInfo = pages.map((page, index) => {
 });
 ---
 
-<section></section>
 
-<picture id="btn-open" class="md:hidden z-1 cursor-pointer">
-  <img class="w-auto h-auto" src="/Setting.svg" alt="setting" />
+<picture id="btn-open" class=" md:hidden z-1 cursor-pointer">
+  <svg class="w-6 h-6">
+          <use xlink:href="sprite.svg#setting" />
+        </svg>
 </picture>
 
 <div class="hidden md:block mb-2 text-[10px] px-6 z-1">

@@ -7,37 +7,41 @@ import Modal from "../shared/Modal.astro";
 <Modal
   idName="Mi"
   name="Mi"
-  background="/Contacts.svg"
-  size="w-20  md:w-12 "
+  background="/sprite.svg#contact"
+  size="w-22 h-24  md:w-20 "
+  margin="-mt-4"
 >
   <Fragment slot="icon"><IconAbout /></Fragment>
 
- <article class="card   p-6 rounded-2xl max-w-sm mx-auto items-center gap-y-4">
-  <h1 class="text-3xl font-bold mb-2 text-center  text-base-content">Hey, soy {basics.name}</h1>
+  <article class="card p-6 rounded-2xl max-w-sm mx-auto items-center gap-y-4">
+    <h1 class="text-3xl font-bold mb-2 text-center text-base-content">
+      Hey, soy {basics.name}
+    </h1>
 
-  <p class="text-left text-lg text-base-content/70 font-light leading-relaxed">
-    {basics.titular}
-  </p>
+    <p
+      class="text-left text-lg text-base-content/70 font-light leading-relaxed"
+    >
+      {basics.titular}
+    </p>
 
-  <p class="text-left text-sm font-light leading-relaxed text-base-content">
-    {basics.resumen}
-  </p>
-</article>
+    <p class="text-left text-sm font-light leading-relaxed text-base-content">
+      {basics.resumen}
+    </p>
+  </article>
 
-<a
-  onclick="window.dispatchEvent(new CustomEvent('open', { detail: 'Tecnología' }))"
-  id="btnModal"
-  class="btn max-w-auto mt-4 btn-primary gap-2 relative z-10 transition hover:-translate-y-1 hover:scale-105 mx-auto"
->
-  Tecnología
-  <span class="relative flex size-3">
-  <span
-    class="absolute inline-flex h-full w-full animate-ping rounded-full bg-info opacity-75"
-  ></span>
-  <span class="relative inline-flex size-3 rounded-full bg-error"></span>
-</span>
-
-</a>
+  <a
+    onclick="window.dispatchEvent(new CustomEvent('open', { detail: 'Tecnología' }))"
+    id="btnModal"
+    class="btn max-w-auto mt-4 btn-primary gap-2 relative z-10 transition hover:-translate-y-1 hover:scale-105 mx-auto"
+  >
+    Tecnología
+    <span class="relative flex size-3">
+      <span
+        class="absolute inline-flex h-full w-full animate-ping rounded-full bg-info opacity-75"
+      ></span>
+      <span class="relative inline-flex size-3 rounded-full bg-error"></span>
+    </span>
+  </a>
 </Modal>
 
 <script></script>

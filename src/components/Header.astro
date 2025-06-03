@@ -7,33 +7,29 @@ import StarTime from "~/icons/StarTime.astro";
 ---
 
 <header
-  class="flex justify-between gap-x-6 mb-8 md:order-last md:flex-col md:gap-8 md:gap-x-0 md:items-center md:w-100 md:h-11/12 py-4 md:justify-start md:mt-0 " 
+  class="flex justify-between gap-x-6 mb-8 md:order-last md:flex-col md:gap-8 md:gap-x-0 md:items-center md:w-100 md:h-11/12 py-4 md:justify-start md:mt-0"
 >
   <article
     class=` relative flex flex-col justify-center items-center  cursor-pointer md:mr-60 `
   >
-    <StarSeach  />
+    <StarSeach />
     <KeyBoardSearch />
   </article>
-  <article class="flex flex-col justify-center items-center h-16 relative ">
-    <StarTime class="absolute inset-0 w-full h-full fill-base-100 z-0" />
+  <article class="flex flex-col justify-center items-center h-16 relative group ">
+    <StarTime class="absolute inset-0 w-full h-full fill-base-100 z-0 group-hover:fill-primary" />
 
     <ClockHora />
   </article>
 
   <article
-    class="hidden md:flex relative   flex-col justify-center items-center  cursor-pointer md:mr-60"
+    class="hidden md:flex relative flex-col justify-center items-center cursor-pointer md:mr-60 group"
     id="imagine"
   >
-    <StarIF class="absolute inset-0 w-full h-full fill-base-100 z-0" />
-    <p id="text" class="px-4 text-sm transition-all duration-500  z-1">
+    <StarIF class="absolute inset-0 w-full h-full fill-base-100 z-0 transition-all duration-500 group:hover:fill-primary hover:scale-110" />
+    <p id="text" class="px-4 text-sm transition-all duration-500 z-1">
       If u can imagine it, u can program it
     </p>
-       
-
   </article>
-
-
 </header>
 
 <script>

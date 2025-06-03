@@ -1,45 +1,44 @@
 ---
 import Close from "~/icons/Close.astro";
 
-const { idName,  name, background, size, width, margin, tamaño, color } = Astro.props;
+const { idName, name, background, size, width = "", margin, tamaño, color } =
+  Astro.props;
 const id = name.toLowerCase().replace(/\s+/g, "-");
-console.log(id)
+console.log(id);
 ---
 
 <dialog id={id} data-modal-id={id} class="modal w-full h-full">
   <section class=`modal-box ${width} rounded-none `>
     <header class="flex justify-between items-center mb-4">
       <h2
-        class=`flex justify-center items-center gap-2 text-2xl font-bold text-center text-base-content ${color}`
+        class=`flex justify-center items-center gap-2 text-2xl font-bold text-center text-base-content `
       >
-        <slot name="icon"  />
+        <slot name="icon" />
         {name}
       </h2>
-    <button
-      onclick=`${id}.close()`
-      data-modal-close
-      class=`btn btn-sm btn-circle btn-ghost ${color}`
-    >
-      <Close />
-    </button>
+      <button
+        onclick=`${id}.close()`
+        data-modal-close
+        class=`btn btn-sm btn-circle btn-ghost ${color}`
+      >
+        <Close />
+      </button>
     </header>
     <div class="card-body w-full mx-auto">
       <slot />
     </div>
   </section>
   <form method="dialog" class="modal-backdrop w-full">
-  <button>close</button>
-</form>
-
+    <button>close</button>
+  </form>
 </dialog>
 
-<figure
-  onclick=`${id}.showModal()`
-  class=`modal-btn cursor-pointer ${margin}`
->
-  <img src={background} alt={name} class={size} />
+<figure onclick=`${id}.showModal()` class=`modal-btn cursor-pointer ${margin}`>
+  <svg class={size}>
+    <use xlink:href={background}/>
+  </svg>
   <figcaption
-    class=`text-base text-white mix-blend-difference outline-pink-500  text-center font-light ${tamaño}`
+    class=`text-base text-white mix-blend-difference outline-pink-500  text-center font-light  ${tamaño}`
   >
     {name}
   </figcaption>

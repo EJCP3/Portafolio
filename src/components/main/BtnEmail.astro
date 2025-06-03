@@ -3,13 +3,14 @@
 ---
 
 <div class="flex flex-col justify-center items-center md:w-15 md:h-10">
-  <a class="text-center" id="copy">
-    <img
-      class="w-20 h-20 md:w-15 md:h-10"
-      src="/Email.svg"
-      alt="euddycabrera03@gmail.com"
-    />
-    <span class="text-base text-white mix-blend-difference outline-pink-500 mx-auto font-light">
+  <a class="text-center" id="copy md:h-10">
+    <svg class="size-22 md:size-20">
+      <use xlink:href="/sprite.svg#email"></use>
+    </svg>
+
+    <span
+      class="text-base text-white mix-blend-difference outline-pink-500 mx-auto font-light"
+    >
       E-mail
     </span>
     <p class="hidden" id="copy1">euddycabrera03@gmail.com</p>
@@ -24,7 +25,6 @@
       y: "top",
     },
   });
-
 
   const btnEmail = document.getElementById("copy");
   const btnEmail1 = document.getElementById("copy1").innerText;
