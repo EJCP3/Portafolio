@@ -2,7 +2,7 @@
 const { number, name } = Astro.props;
 ---
 
-<li class="flex h-8 gap-x-4" data-name={name} id={name} >
+<li class="flex h-8 gap-x-4" data-name={name} data-number={number} id={name} >
   <aside
     class="w-20 bg-red-600 flex items-center justify-center border-red-200 border-r-6 "
   data-img-container>

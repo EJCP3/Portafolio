@@ -47,42 +47,91 @@
   },
 
   "projects": [
-    {
-      "name": "Gatopia - Mini red social para adopción de gatos",
-      "img": "/proyecto/gatopia.jpeg",
-      "description": "Plataforma interactiva para publicar contenido, gestionar adopciones y donaciones.",
-      "technologies": ["React.js", "Sass", "supabase", "React Suite"],
-      "github": "https://github.com/EJCP3/_Gatopia"
+   {
+      "name": "MiniTicker",
+      "img": "/proyecto/miniticker2.png",
+      "imgs" : [
+        "/proyecto/miniticker1.png",
+        "/proyecto/miniticker2.png",
+        "/proyecto/miniticker3.png",
+        "/proyecto/miniticker4.png",
+        "/proyecto/miniticker5.png"
+      ],
+      "description": "El proyecto consiste en una aplicación web de múltiples páginas (MPA), crear solicitudes de servicio asignadas a diferentes áreas de una empresa.",
+      "technologies": ["vue.js", "tailwind CSS", "daisyUI", "net"],
+      "github": "https://github.com/EJCP3/MiniTickerApp/"
+      
     },
+
     {
-      "name": "Memory of you - App de getion de recuerdos",
-      "img": "/proyecto/memory.jpeg",
-      "description": "Aplicación para gestionar recuerdos y fotos de seres queridos.",
-      "technologies": ["React.js", "tailwind CSS", "vite"],
-      "github": "https://github.com/EJCP3/Memory-of-you",
-      "demo": "https://memoryofyou00.netlify.app"
+      "name": "Gestor de inventario",
+      "img": "/proyecto/gestorInventario2.png",
+      "imgs" : [
+        "/proyecto/gestorInventario1.png",
+        "/proyecto/gestorInventario2.png",
+        "/proyecto/gestorInventario3.png",
+        "/proyecto/gestorInventario4.png",
+        "/proyecto/gestorInventario5.png",
+        "/proyecto/gestorInventario6.png",
+        "/proyecto/gestorInventario7.png",
+        "/proyecto/gestorInventario8.png",
+        "/proyecto/gestorInventario9.png",
+        "/proyecto/gestorInventario10.png"
+      ],
+      "description": "Este proyecto consiste en una aplicación Full-Stack diseñada para gestionar productos, clientes y ventas",
+      "technologies": ["vue.js", "tailwind CSS", "daisyUI", "net"],
+      "github": "https://github.com/EJCP3/Prueba-Tecnica--Full-Stack/tree/main"
+     
     },
+
+   
     {
       "name": "Rest Countries Api",
       "img": "/proyecto/countries.jpeg",
+      "imgs" : [
+        "/proyecto/countries.jpeg",
+        "/proyecto/countries1.jpeg"
+      ],
       "description": "Pagina para ver todos los países por medio de consumir una API y pudiendo ver mas detalle sobre el país.",
       "technologies": ["React.js", "tailwind CSS", "daisyUI"],
       "github": "https://github.com/EJCP3/rest-countries-api",
       "demo": "https://countriesfind.netlify.app/"
     },
     {
+      "name": "Conecta 4",
+      "img": "/proyecto/conecta2.png",
+      "imgs" : [
+        "/proyecto/conecta1.png",
+        "/proyecto/conecta2.png",
+        "/proyecto/conecta3.png",
+        "/proyecto/conecta4.png"
+      ],
+      "description": "Pagina para jugar el juego conecta 4.",
+      "technologies": ["React.js", "tailwind CSS", "daisyUI"],
+      "github": "https://github.com/EJCP3/Conecta-4",
+      "demo": "https://conecta4iu.netlify.app/"
+    },
+    {
       "name": "My task bard",
       "img": "/proyecto/task.jpeg",
+      "imgs" : [
+        "/proyecto/task.jpeg",
+        "/proyecto/task1.jpeg"
+      ],
       "description": "Aplicación para gestionar tareas con un diseño minimalista y moderno.",
-      "technologies": ["React.js", "tailwind CSS", "vite"],
+      "technologies": ["React.js", "tailwind CSS"],
       "github": "https://github.com/EJCP3/Memory-of-you",
       "demo": "https://mytaskboardejcp.netlify.app"
     }
+     
+     
    
 
   ],
   "skills": [
     "react.js",
+    "vue.js",
+    "net",
     "javaScript",
     "supabase",
     "html",

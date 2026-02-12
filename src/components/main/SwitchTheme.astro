@@ -25,8 +25,8 @@ import { themes } from "../data/Themes";
   >
     <div class="border-b-4 border-error flex gap-x-2 text-base items-center">
       <img class="w-7 h-8" src="/pokeball.png" />
-      <span class="">001</span>
-      <h2>pastel</h2>
+      <span id="themeNumber" class="">001</span>
+      <h2 id="themeName">pastel</h2>
 
       <aside class="grid grid-cols-4 w-[74px] overflow-hidden ml-auto">
         <span class="bg-base-200 w-6 h-4"></span>
@@ -97,7 +97,7 @@ import { themes } from "../data/Themes";
       data-theme="dark"
       class="tabla w-full bg-white border-2 border-neutral h-70 mx-auto max-w-lg rounded-sm overflow-hidden"
     >
-      <ul class="w-100 h-70 text-sm leading-none text-black" id="theme-list">
+      <ul class="w-100 h-70 text-sm leading-none text-black bg-white" id="theme-list">
         {themes.map((theme, index) => <Theme name={theme} number={index} />)}
       </ul>
     </section>
@@ -128,40 +128,54 @@ import { themes } from "../data/Themes";
 
 <script>
   import "./Scrollbar.js";
+  
   const items = document.querySelectorAll("#theme-list li");
+  const themeNumberDisplay = document.querySelector("#themeNumber");
+  const themeNameDisplay = document.querySelector("#themeName");
   const activeTheme = localStorage.getItem("theme");
 
+  // Función para formatear el número (ej: 1 -> 001)
+  const formatNumber = (num) => String(num + 1).padStart(3, '0');
 
- items.forEach((li) => {
-  const themeName = li.dataset.name;
-  const aside = li.querySelector("[data-img-container]");
+  items.forEach((li) => {
+    const themeName = li.dataset.name;
+    const themeIndex = li.dataset.number; // Asegúrate de que Theme.astro tenga data-number
+    const aside = li.querySelector("[data-img-container]");
 
-  const isInitiallyActive = themeName === activeTheme;
+    // Estado inicial
+    if (themeName === activeTheme) {
+      li.classList.add("border-4", "rounded-r-sm", "border-red-600");
+      if (aside) aside.innerHTML = `<img class="size-10 rounded-box" src="/pokeball.png" />`;
+      
+      // Actualizar texto inicial
+      themeNumberDisplay.textContent = formatNumber(parseInt(themeIndex));
+      themeNameDisplay.textContent = themeName;
+    }
 
-  if (isInitiallyActive) {
-    li.classList.add("border-4", "rounded-r-sm", "border-red-600");
-    aside.innerHTML = `<img class="size-10 rounded-box" src="/pokeball.png" />`;
-  }
+    li.addEventListener("click", () => {
+      // 1. Guardar y aplicar tema
+      localStorage.setItem("theme", themeName);
+      document.body.setAttribute("data-theme", themeName);
 
-  li.addEventListener("click", () => {
-    localStorage.setItem("theme", themeName);
-    document.body.setAttribute("data-theme", themeName);
+      // 2. Actualizar el Header (Nombre y Número)
+      if (themeNumberDisplay) themeNumberDisplay.textContent = formatNumber(parseInt(themeIndex));
+      if (themeNameDisplay) themeNameDisplay.textContent = themeName;
 
-    items.forEach((otherLi) => {
-      const otherAside = otherLi.querySelector("[data-img-container]");
-      const otherName = otherLi.dataset.name;
-      const isActive = otherName === themeName;
+      // 3. Actualizar clases visuales de la lista
+      items.forEach((otherLi) => {
+        const otherAside = otherLi.querySelector("[data-img-container]");
+        const isActive = otherLi === li;
 
-      otherLi.classList.toggle("border-4", isActive);
-      otherLi.classList.toggle("rounded-r-sm", isActive);
-      otherLi.classList.toggle("border-red-600", isActive);
+        otherLi.classList.toggle("border-4", isActive);
+        otherLi.classList.toggle("rounded-r-sm", isActive);
+        otherLi.classList.toggle("border-red-600", isActive);
 
-      otherAside.innerHTML = isActive
-        ? `<img class="size-10 rounded-box" src="/pokeball.png" />`
-        : `<div class="w-6 h-6 bg-white rounded-full"></div>`;
+        if (otherAside) {
+          otherAside.innerHTML = isActive
+            ? `<img class="size-10 rounded-box" src="/pokeball.png" />`
+            : `<div class="w-6 h-6 bg-white rounded-full"></div>`;
+        }
+      });
     });
-
   });
-});
-
 </script>

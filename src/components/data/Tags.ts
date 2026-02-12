@@ -11,16 +11,29 @@ import React from "~/icons/React.astro";
 import Vitejs from "~/icons/vitejs.astro";
 import Daisyui from "~/icons/DaisyUI.astro";
 import Tailwindcss from "~/icons/tailwindcss.astro";
-
+import Net from "~/icons/Net.astro";
+import Vue from "~/icons/Vue.astro";
 
 
 
 export const TAGS = {
   react: {
     name: "React.js",
-    class: "badge-info bg-info",
+    class: "badge-info ",
     img: "/sprite.svg#react",
     icon: React,
+  },
+  vue: {
+    name: "Vue.js",
+    class: "badge-success",
+    img: "/sprite.svg#vue",
+    icon: Vue,
+  },
+  net: {
+    name: "net",
+    class: "badge-secondary",
+    img: "/sprite.svg#net",
+    icon: Net,
   },
   astro: {
     name: "Astro",
